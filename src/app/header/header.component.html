@@ -1,0 +1,55 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" routerLink="Home">
+      <h1><mat-icon>attach_money</mat-icon>Financial Platform</h1>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <h3 class="navbar-item" routerLink="Doc">
+        Documentation
+      </h3>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <h3 class="navbar-link">
+          More
+        </h3>
+
+        <div class="navbar-dropdown">
+          <h3 class="navbar-item">
+            About
+          </h3>
+          <h3 class="navbar-item">
+            Jobs
+          </h3>
+          <h3 class="navbar-item">
+            Contact
+          </h3>
+          <hr class="navbar-divider">
+          <h3 class="navbar-item">
+            Report an issue
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a>
+            <button mat-raised-button [color]="'primary'" routerLink="Login">Login</button>
+          </a>
+          <button mat-stroked-button [color]="'primary'" routerLink="Register">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
