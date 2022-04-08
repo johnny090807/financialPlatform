@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   returnUserEmail(): string{
-    return this.user.email;
+    return this.user?.email;
   }
   toggleNavbar(){
     this.navBurger.nativeElement.classList.toggle('is-active')
@@ -32,7 +32,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-    this.authService.logout();
+    this.authService.Logout().then(() =>{
+      this.user = JSON.parse(localStorage.getItem('user')!);
+    });
   }
 
 }

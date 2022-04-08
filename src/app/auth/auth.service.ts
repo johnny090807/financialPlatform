@@ -39,10 +39,9 @@ export class AuthService {
         });
         this.SetUserData(result.user);
         this._snackBar.open("Successfully logged in!", "OK");
-      })
-      .catch((error) => {
+      }, (error) =>{
         window.alert(error.message);
-      });
+      })
   }
   SignUp(email: string, password: string) {
     return this.afAuth
@@ -83,7 +82,10 @@ export class AuthService {
       .then((u: any) => u.sendEmailVerification())
   }
 
-  logout() {
-
+  Logout() {
+    return this.afAuth.signOut().then(() => {
+      localStorage.removeItem('user');
+      this.router.navigate(['Login']);
+    });
   }
 }
