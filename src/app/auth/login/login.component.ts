@@ -9,7 +9,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-  registerForm = new FormGroup({
+  loginForm = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('',  [Validators.required, Validators.minLength(8)])
   })
@@ -20,14 +20,14 @@ export class LoginComponent implements OnInit {
   }
 
   getEmailError() {
-    if (this.registerForm.controls.email.hasError('required')) {
+    if (this.loginForm.controls.email.hasError('required')) {
       return 'Email is required';
     }
 
-    return this.registerForm.controls.email.hasError('email') ? 'Not a valid email' : '';
+    return this.loginForm.controls.email.hasError('email') ? 'Not a valid email' : '';
   }
 
   Login() {
-    this.authService.SignIn(this.registerForm.value.email, this.registerForm.value.password)
+    this.authService.SignIn(this.loginForm.value.email, this.loginForm.value.password)
   }
 }

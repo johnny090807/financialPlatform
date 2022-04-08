@@ -2,7 +2,7 @@
   <mat-card-title>Login</mat-card-title>
   <mat-card-subtitle>This form is to login to the website</mat-card-subtitle>
   <mat-card-content>
-    <form action="" [formGroup]="registerForm">
+    <form action="" [formGroup]="loginForm">
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input type="email"
@@ -10,12 +10,12 @@
                placeholder="Ex. John@gmail.com"
                formControlName="email"
                required
-               [ngClass]="{'is-danger': registerForm.controls.email.invalid &&
+               [ngClass]="{'is-danger': loginForm.controls.email.invalid &&
                            (
-                           registerForm.controls.email.dirty ||
-                           registerForm.controls.email.touched &&
-                           registerForm.controls.email.errors?.required)}">
-        <mat-error *ngIf="this.registerForm.controls.email.invalid">{{getEmailError()}}</mat-error>
+                           loginForm.controls.email.dirty ||
+                           loginForm.controls.email.touched &&
+                           loginForm.controls.email.errors?.required)}">
+        <mat-error *ngIf="this.loginForm.controls.email.invalid">{{getEmailError()}}</mat-error>
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
@@ -24,13 +24,13 @@
                matInput
                formControlName="password"
                required
-               [ngClass]="{'is-danger': registerForm.controls.password.invalid &&
+               [ngClass]="{'is-danger': loginForm.controls.password.invalid &&
                            (
-                           registerForm.controls.password.dirty ||
-                           registerForm.controls.password.touched &&
-                           registerForm.controls.password.errors?.required)}">
-        <mat-error *ngIf="this.registerForm.controls.password.errors?.required">Password is required</mat-error>
-        <mat-error *ngIf="this.registerForm.controls.password.value.length < 8">Password must be 8 characters long</mat-error>
+                           loginForm.controls.password.dirty ||
+                           loginForm.controls.password.touched &&
+                           loginForm.controls.password.errors?.required)}">
+        <mat-error *ngIf="this.loginForm.controls.password.errors?.required">Password is required</mat-error>
+        <mat-error *ngIf="this.loginForm.controls.password.value.length < 8">Password must be 8 characters long</mat-error>
       </mat-form-field>
     </form>
 
