@@ -1,17 +1,17 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" routerLink="Home">
-      <h1><mat-icon>attach_money</mat-icon>Financial Platform</h1>
+      <h1>Financial Platform</h1>
     </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <a role="button" #navBurger (click)="toggleNavbar()" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div id="navbarBasicExample" #navMenu class="navbar-menu">
     <div class="navbar-start">
       <h3 class="navbar-item" routerLink="Doc">
         Documentation
@@ -39,14 +39,26 @@
         </div>
       </div>
     </div>
-
-    <div class="navbar-end">
+    <div class="navbar-end" *ngIf="!authService.isLoggedIn">
       <div class="navbar-item">
         <div class="buttons">
-          <a>
-            <button mat-raised-button [color]="'primary'" routerLink="Login">Login</button>
-          </a>
+          <button mat-raised-button [color]="'primary'" routerLink="Login">Login</button>
           <button mat-stroked-button [color]="'primary'" routerLink="Register">Register</button>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-end" *ngIf="authService.isLoggedIn">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a *ngIf="this.user.photoURL == null" class="button is-light is-rounded is-32x32" [routerLink]="['/user']" routerLinkActive="router-link-active">
+            <p >{{this.returnUserEmail().charAt(0) | titlecase }}</p>
+          </a>
+          <figure class="image is-32x32 m-2" *ngIf="this.user.photoURL != null" [routerLink]="['/user']" routerLinkActive="router-link-active" >
+            <img class="is-rounded" [src]="this.user.photoURL">
+          </figure>
+          <a class="button is-danger" (click)="logout()">
+            Log out
+          </a>
         </div>
       </div>
     </div>
