@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   returnUserEmail(): string{
+    this.user = JSON.parse(localStorage.getItem('user')!);
     return this.user?.email;
   }
   toggleNavbar(){
