@@ -74,7 +74,12 @@ export class AuthService {
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null;
+    return user !== null ;
+  }
+
+  get isVerified(): boolean {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return user !== null && user.emailVerified !== false;
   }
 
   SendVerificationMail() {
