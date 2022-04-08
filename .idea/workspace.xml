@@ -4,11 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="">
+    <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="added forgot component">
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/app.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/app.component.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/auth/forgot/forgot.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/auth/forgot/forgot.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/auth/forgot/forgot.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/auth/forgot/forgot.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/home/home.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/home/home.component.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/header/header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/home/home.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/home/home.component.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +130,7 @@
       <workItem from="1649340621301" duration="1728000" />
       <workItem from="1649342524558" duration="3142000" />
       <workItem from="1649413260915" duration="7558000" />
-      <workItem from="1649420969432" duration="3971000" />
+      <workItem from="1649420969432" duration="5407000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, logout, home and header">
       <created>1649345582057</created>
@@ -129,7 +139,28 @@
       <option name="project" value="LOCAL" />
       <updated>1649345582057</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added check to login.component.html">
+      <created>1649425387417</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649425387417</updated>
+    </task>
+    <task id="LOCAL-00003" summary="made budget warning to 4mb">
+      <created>1649425407212</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649425407212</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added check if someone is verified">
+      <created>1649425421392</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1649425421392</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -171,7 +202,11 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added login, register, logout, home and header" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added login, register, logout, home and header" />
+    <MESSAGE value="added check to login.component.html" />
+    <MESSAGE value="made budget warning to 4mb" />
+    <MESSAGE value="added check if someone is verified" />
+    <MESSAGE value="added forgot component" />
+    <option name="LAST_COMMIT_MESSAGE" value="added forgot component" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/firebase.json">

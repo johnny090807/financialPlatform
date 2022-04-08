@@ -29,6 +29,14 @@ export class AuthService {
     });
   }
 
+  SendForgotEmail(email: string){
+    this.afAuth.sendPasswordResetEmail(email).then(() =>{
+        this._snackBar.open("Password reset email sent", "OK")
+      }, error =>{
+        this._snackBar.open(error.message)
+      }
+    )
+  }
 
   SignIn(email: string, password: string) {
     return this.afAuth
@@ -39,8 +47,8 @@ export class AuthService {
         });
         this.SetUserData(result.user);
         this._snackBar.open("Successfully logged in!", "OK");
-      }, (error) =>{
-        window.alert(error.message);
+      }, error =>{
+        this._snackBar.open(error.message)
       })
   }
   SignUp(email: string, password: string) {
@@ -52,7 +60,7 @@ export class AuthService {
         this._snackBar.open("Successfully registered!", "OK");
       })
       .catch((error) => {
-        window.alert(error.message);
+        this._snackBar.open(error.message)
       });
   }
 

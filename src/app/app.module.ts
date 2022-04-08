@@ -26,6 +26,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { ForgotComponent } from './auth/forgot/forgot.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     RegisterComponent,
     LogoutComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule,
