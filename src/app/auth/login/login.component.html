@@ -39,7 +39,7 @@
     </mat-card-footer>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-raised-button color="primary" [disabled]="this.loginForm.invalid" (click)="Login()">LOGIN</button>
+    <button mat-raised-button color="primary" (keydown.enter)="Login()" [disabled]="this.loginForm.invalid" (click)="Login()">LOGIN</button>
     <button mat-raised-button color="accent" routerLink="/Register">REGISTER</button>
   </mat-card-actions>
 </mat-card>

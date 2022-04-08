@@ -87,7 +87,7 @@ export class AuthService {
 
   get isVerified(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false;
+    return user.emailVerified !== false;
   }
 
   SendVerificationMail() {
