@@ -27,6 +27,7 @@ import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { ForgotComponent } from './auth/forgot/forgot.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ForgotComponent } from './auth/forgot/forgot.component';
     LogoutComponent,
     HomeComponent,
     HeaderComponent,
-    ForgotComponent
+    ForgotComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,

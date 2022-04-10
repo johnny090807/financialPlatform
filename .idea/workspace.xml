@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice.component.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/forgot/forgot.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/forgot/forgot.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/register/register.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/header/header.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +128,8 @@
       <workItem from="1649340621301" duration="1728000" />
       <workItem from="1649342524558" duration="3142000" />
       <workItem from="1649413260915" duration="7558000" />
-      <workItem from="1649420969432" duration="6158000" />
+      <workItem from="1649420969432" duration="6948000" />
+      <workItem from="1649614677241" duration="2460000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, logout, home and header">
       <created>1649345582057</created>
@@ -159,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649426448086</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="small changes">
+      <created>1649427306183</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1649427306183</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -205,7 +219,8 @@
     <MESSAGE value="made budget warning to 4mb" />
     <MESSAGE value="added check if someone is verified" />
     <MESSAGE value="added forgot component" />
-    <option name="LAST_COMMIT_MESSAGE" value="added forgot component" />
+    <MESSAGE value="small changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="small changes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/firebase.json">
