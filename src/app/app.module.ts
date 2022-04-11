@@ -28,6 +28,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { ForgotComponent } from './auth/forgot/forgot.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -61,6 +64,9 @@ import { InvoiceComponent } from './invoice/invoice.component';
     ReactiveFormsModule,
     FormsModule,
     MatSnackBarModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
