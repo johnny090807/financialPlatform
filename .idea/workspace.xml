@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="" />
+    <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,6 +119,7 @@
       <workItem from="1649413260915" duration="7558000" />
       <workItem from="1649420969432" duration="6948000" />
       <workItem from="1649614677241" duration="2560000" />
+      <workItem from="1649679987613" duration="180000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, logout, home and header">
       <created>1649345582057</created>
