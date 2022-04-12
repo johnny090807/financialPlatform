@@ -5,21 +5,6 @@ import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthService} from "../auth/auth.service";
 import {User} from "../objects/user";
-import {InvoiceLists} from "../objects/invoiceLists";
-import {
-  collection,
-  deleteDoc,
-  deleteField,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  updateDoc,
-  where
-} from "@angular/fire/firestore";
-import firebase from "firebase/compat";
-import DocumentReference = firebase.firestore.DocumentReference;
-import firestore = firebase.firestore;
 import {Invoice} from "../objects/invoice";
 
 @Injectable({
