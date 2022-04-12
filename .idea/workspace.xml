@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/financialPlatform.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/financialPlatform.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/objects/invoiceLists.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/objects/invoices.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/auth.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice.component.ts" afterDir="false" />
     </list>
@@ -128,6 +130,8 @@
       <workItem from="1649420969432" duration="6948000" />
       <workItem from="1649614677241" duration="2560000" />
       <workItem from="1649679987613" duration="180000" />
+      <workItem from="1649751948607" duration="11910000" />
+      <workItem from="1649769505679" duration="2494000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, logout, home and header">
       <created>1649345582057</created>

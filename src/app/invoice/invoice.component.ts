@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../auth/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {InvoiceService} from "./invoice.service";
+import {InvoiceLists} from "../objects/invoiceLists";
 
 @Component({
   selector: 'app-invoice',
@@ -8,31 +10,71 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./invoice.component.scss']
 })
 export class InvoiceComponent implements OnInit {
-  displayedColumns = ["id", "element", "subelement", "location", "data"]
-  dataSource = [{
-    "id": "edaed039498fhuds",
-    "element": "something",
-    "subelement": "something",
-    "location": "something",
-    "data": "something"
+  displayedColumns = ["id", "element", "subelement", "location"]
+  lists = [{
+    uid: "nothing",
+    name: "New list"
   }]
+  dataSource:any = []
   loading = true
+  loggedInUser: any
   constructor(private authService: AuthService,
-              private _snackBar: MatSnackBar
+              private _snackBar: MatSnackBar,
+              private invoiceService: InvoiceService
   ) { }
 
   ngOnInit(): void {
-    if (this.authService.isLoggedIn){
-      if (!this.authService.isVerified){
-        this._snackBar.open("You've not verified your email yet", "RESEND").onAction().subscribe(() => {
-          this.authService.SendVerificationMail();
-        }, error => {
-          this._snackBar.open(error.message, "ok")
-        })
-      }
-    }
-    this.loading = false;
+    this.loading = true;
+    this.authService.verifyEmail()
+    this.loggedInUser = JSON.parse(localStorage.getItem('user')!)
+    this.invoiceService.getAllInvoiceListsByUser(this.loggedInUser).subscribe(res => {
+      this.lists = []
+      res.forEach((data:any) => {
+        this.lists.push(data)
+      })
+      this.loading = false;
+    }, error => {
+      this._snackBar.open(error.message, "ok")
+    })
+  }
 
+  selectInvoice(uid: string) {
+    this.loading = true;
+    this.invoiceService.getAllInvoices(this.loggedInUser, uid).subscribe(data => {
+      this.dataSource = data;
+      this.loading = false;
+    }, error => {
+      this._snackBar.open(error.message, "ok")
+    })
+  }
+
+  addNewList() {
+    this.invoiceService.addInvoiceToUser(this.loggedInUser).then((res) => {
+    }, error => {
+      this._snackBar.open(error, "ok")
+    })
+
+  }
+
+  deleteFromLists(uid: string) {
+    if(window.confirm("Do you want to remove this list?")){
+      this.invoiceService.deleteInvoice(this.loggedInUser, uid)
+    }
+  }
+
+  editList(uid: string, index: number) {
+    let text;
+    let output = window.prompt("Please enter a name:", this.lists[index].name)
+    if (output == "" || output == null){
+      text = "New list"
+    }else if(output.length > 25){
+      this._snackBar.open("Invoice list name can't be longer than 25.", "ok")
+      text = "New list"
+    }
+    else{
+      text = output
+    }
+    this.invoiceService.updateInvoiceName(this.loggedInUser, uid, text)
   }
 
 }

@@ -101,4 +101,16 @@ export class AuthService {
       this.router.navigate(['Login']);
     });
   }
+
+  verifyEmail(){
+    if (this.isLoggedIn){
+      if (!this.isVerified){
+        this._snackBar.open("You've not verified your email yet", "RESEND").onAction().subscribe(() => {
+          this.SendVerificationMail();
+        }, error => {
+          this._snackBar.open(error.message, "ok")
+        })
+      }
+    }
+  }
 }
