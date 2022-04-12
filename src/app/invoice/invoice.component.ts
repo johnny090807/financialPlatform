@@ -10,7 +10,7 @@ import {InvoiceLists} from "../objects/invoiceLists";
   styleUrls: ['./invoice.component.scss']
 })
 export class InvoiceComponent implements OnInit {
-  displayedColumns = ["id", "element", "subelement", "location"]
+  displayedColumns = ["id", "element", "subelement", "location", "actions"]
   lists = [{
     uid: "nothing",
     name: "New list"
@@ -18,6 +18,8 @@ export class InvoiceComponent implements OnInit {
   dataSource:any = []
   loading = true
   loggedInUser: any
+  selectedInvoiceList:any
+  editing = false;
   constructor(private authService: AuthService,
               private _snackBar: MatSnackBar,
               private invoiceService: InvoiceService
@@ -40,6 +42,7 @@ export class InvoiceComponent implements OnInit {
 
   selectInvoice(uid: string) {
     this.loading = true;
+    this.selectedInvoiceList = uid;
     this.invoiceService.getAllInvoices(this.loggedInUser, uid).subscribe(data => {
       this.dataSource = data;
       this.loading = false;
@@ -49,7 +52,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   addNewList() {
-    this.invoiceService.addInvoiceToUser(this.loggedInUser).then((res) => {
+    this.invoiceService.addInvoiceListToUser(this.loggedInUser).then((res) => {
     }, error => {
       this._snackBar.open(error, "ok")
     })
@@ -58,7 +61,7 @@ export class InvoiceComponent implements OnInit {
 
   deleteFromLists(uid: string) {
     if(window.confirm("Do you want to remove this list?")){
-      this.invoiceService.deleteInvoice(this.loggedInUser, uid)
+      this.invoiceService.deleteInvoiceList(this.loggedInUser, uid)
     }
   }
 
@@ -74,7 +77,16 @@ export class InvoiceComponent implements OnInit {
     else{
       text = output
     }
-    this.invoiceService.updateInvoiceName(this.loggedInUser, uid, text)
+    this.invoiceService.updateInvoiceListName(this.loggedInUser, uid, text)
   }
 
+  addNewInvoice() {
+    this.editing = !this.editing
+  }
+
+  deleteInvoice(uid: string) {
+    if(window.confirm("Do you want to remove this invoice?")) {
+      this.invoiceService.deleteInvoice(this.loggedInUser, this.selectedInvoiceList, uid)
+    }
+  }
 }

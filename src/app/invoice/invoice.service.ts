@@ -20,6 +20,7 @@ import {
 import firebase from "firebase/compat";
 import DocumentReference = firebase.firestore.DocumentReference;
 import firestore = firebase.firestore;
+import {Invoice} from "../objects/invoice";
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ export class InvoiceService {
     private _snackBar: MatSnackBar,
     private authService: AuthService) { }
 
-  addInvoiceToUser(user: User){
+  addInvoiceListToUser(user: User){
     let uid = this.afs.createId();
     const invoiceRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}/invoiceLists/${uid}`
@@ -48,6 +49,18 @@ export class InvoiceService {
     })
 
   }
+
+  addInvoiceToInvoiceList(user: User, invoiceListUid: string, invoice: Invoice){
+    let uid = this.afs.createId();
+    const invoiceRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}/invoiceLists/${invoiceListUid}/invoices/${uid}`
+    )
+    invoice["uid"] = uid;
+    return invoiceRef.set(invoice, {
+      merge: true
+    })
+
+  }
   getAllInvoiceListsByUser(user: User) {
     return this.afs.collection(`users/${user.uid}/invoiceLists`).valueChanges();
   }
@@ -56,11 +69,15 @@ export class InvoiceService {
     return this.afs.collection(`users/${user.uid}/invoiceLists/${invoiceUID}/invoices`).valueChanges();
   }
 
-  deleteInvoice(user: User, uid: string) {
+  deleteInvoiceList(user: User, uid: string) {
     return this.afs.collection(`users`).doc(user.uid).collection("invoiceLists").doc(uid).delete();
   }
 
-  updateInvoiceName(user: User, uid: string, text: string) {
+  deleteInvoice(user: User, uid: string, invoiceUid: string) {
+    return this.afs.collection(`users`).doc(user.uid).collection("invoiceLists").doc(uid).collection("invoices").doc(invoiceUid).delete();
+  }
+
+  updateInvoiceListName(user: User, uid: string, text: string) {
     const invoiceRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}/invoiceLists/${uid}`
     )

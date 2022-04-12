@@ -1,0 +1,30 @@
+<form action="" [formGroup]="invoiceForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Costs</mat-label>
+    <input type="number"
+           matInput
+           placeholder=""
+           formControlName="cost"
+           required>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Type</mat-label>
+    <input type="text"
+             matInput
+             placeholder="Phone costs"
+             formControlName="type"
+             required>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>VAT</mat-label>
+    <input type="number"
+           matInput
+           formControlName="VAT"
+           required>
+      </mat-form-field>
+  <br>
+  <button mat-raised-button (click)="submit()" color="primary">SUBMIT</button>
+  <button mat-stroked-button color="warn">CANCEL</button>
+</form>
