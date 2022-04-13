@@ -29,6 +29,15 @@ export class AuthService {
     });
   }
 
+  canActivate(): boolean {
+    if (!this.userData.isVerified) {
+      this.verifyEmail()
+      this.router.navigate(['Home']);
+      return false;
+    }
+    return true;
+  }
+
   SendForgotEmail(email: string){
     this.afAuth.sendPasswordResetEmail(email).then(() =>{
         this._snackBar.open("Password reset email sent", "OK")

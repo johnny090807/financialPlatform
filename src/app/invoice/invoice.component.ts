@@ -3,6 +3,7 @@ import {AuthService} from "../auth/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {InvoiceService} from "./invoice.service";
 import {InvoiceLists} from "../objects/invoiceLists";
+import {Invoice} from "../objects/invoice";
 
 @Component({
   selector: 'app-invoice',
@@ -11,7 +12,7 @@ import {InvoiceLists} from "../objects/invoiceLists";
 })
 export class InvoiceComponent implements OnInit {
   displayedColumns = ["id", "element", "subelement", "location", "actions"]
-  lists = [{
+  lists: InvoiceLists[] = [{
     uid: "nothing",
     name: "New list"
   }]
@@ -20,7 +21,8 @@ export class InvoiceComponent implements OnInit {
   loggedInUser: any
   selectedInvoiceList:any
   editing = false;
-  constructor(private authService: AuthService,
+  editingInvoice: any;
+  constructor(public authService: AuthService,
               private _snackBar: MatSnackBar,
               private invoiceService: InvoiceService
   ) { }
@@ -29,6 +31,15 @@ export class InvoiceComponent implements OnInit {
     this.loading = true;
     this.authService.verifyEmail()
     this.loggedInUser = JSON.parse(localStorage.getItem('user')!)
+    if (!this.authService.isVerified){
+      this.loading = false
+      return;
+    }
+
+    this.getAllInvoiceLists()
+  }
+
+  getAllInvoiceLists(){
     this.invoiceService.getAllInvoiceListsByUser(this.loggedInUser).subscribe(res => {
       this.lists = []
       res.forEach((data:any) => {
@@ -82,11 +93,17 @@ export class InvoiceComponent implements OnInit {
 
   addNewInvoice() {
     this.editing = !this.editing
+    this.editingInvoice = undefined
   }
 
   deleteInvoice(uid: string) {
     if(window.confirm("Do you want to remove this invoice?")) {
       this.invoiceService.deleteInvoice(this.loggedInUser, this.selectedInvoiceList, uid)
     }
+  }
+
+  editInvoice(invoice: Invoice) {
+    this.editingInvoice = invoice
+    this.editing = true
   }
 }

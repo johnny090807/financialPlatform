@@ -73,4 +73,13 @@ export class InvoiceService {
       merge: true
     })
   }
+
+  updateInvoiceOnInvoiceList(user: User, uid: string, invoice: Invoice) {
+    const invoiceRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}/invoiceLists/${uid}/invoices/${invoice.uid}`
+    )
+    return invoiceRef.set(invoice, {
+      merge: true
+    })
+  }
 }

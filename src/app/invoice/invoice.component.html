@@ -1,10 +1,11 @@
-<div *ngIf="loading" style="position: absolute; background: rgba(0,0,0,0.5); padding-left: 50%; padding-top: 50%; height: 100%; width: 100%">
+<div *ngIf="loading" style="position: absolute; background: rgba(0,0,0,0.5); padding-left: 45%; padding-top: 45%; height: 100%; width: 100%">
+  <h1 *ngIf="!this.authService.isVerified" style="left: 39%; top:40%; position: inherit; color: white">You're not verified yet</h1>
   <mat-spinner style="position: absolute; margin: auto"></mat-spinner>
 </div>
 <p class="title ml-6">Invoice tables</p>
 <mat-divider class="mb-6"></mat-divider>
 
-<div class="columns" style="max-width: 80%; margin: auto">
+<div class="columns ml-2 mr-2">
   <div class="column is-flex-grow-1 box is-flex-direction-column" style="min-width: 200px">
     <a class="mb-2" (click)="addNewList()"> <mat-icon>add</mat-icon> Add a new list</a>
     <div class="is-flex mb-2" *ngFor="let i = index; let list of lists" (click)="selectInvoice(list.uid)">
@@ -17,7 +18,8 @@
   </div>
   <div class="column is-flex-grow-5 box ml-1">
     <p *ngIf="dataSource.length == 0" class="has-text-centered">Nothing selected yet, or no data available.</p>
-    <button (click)="addNewInvoice()" *ngIf="this.selectedInvoiceList != null" mat-raised-button color="primary" style="position: absolute; top: 14%; right: 10%;">Add invoice</button>
+    <button (click)="addNewInvoice()" *ngIf="this.selectedInvoiceList != null && editing == false" mat-raised-button color="primary" style="position: absolute; top: 14%; right: 10%;">Add invoice</button>
+    <button (click)="addNewInvoice()" *ngIf="this.selectedInvoiceList != null && editing == true" mat-raised-button color="primary" style="position: absolute; top: 14%; right: 10%;">Close invoice edit</button>
     <table *ngIf="dataSource.length != 0" mat-table [dataSource]="dataSource" class="" style="width: 100%">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> UID </th>
@@ -38,7 +40,7 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let element">
-          <a><mat-icon>edit</mat-icon></a>
+          <a (click)="editInvoice(element)"><mat-icon>edit</mat-icon></a>
           <a (click)="deleteInvoice(element.uid)"><mat-icon>delete</mat-icon></a>
         </td>
       </ng-container>
@@ -48,6 +50,6 @@
     </table>
   </div>
   <div class="column is-flex is-flex-wrap-wrap" *ngIf="editing">
-    <app-invoice-add [loggedInUser]="this.loggedInUser" [invoiceUid]="selectedInvoiceList"></app-invoice-add>
+    <app-invoice-add [editingInvoice]="this.editingInvoice" [loggedInUser]="this.loggedInUser" [invoiceUid]="selectedInvoiceList"></app-invoice-add>
   </div>
 </div>

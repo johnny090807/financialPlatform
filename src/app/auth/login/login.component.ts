@@ -13,8 +13,7 @@ export class LoginComponent implements OnInit {
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('',  [Validators.required, Validators.minLength(8)])
   })
-  constructor(private authService: AuthService,
-              private fb: FormBuilder,) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
