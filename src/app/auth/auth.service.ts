@@ -30,11 +30,11 @@ export class AuthService {
   }
 
   canActivate(): boolean {
-    if(!this.userData){
-      this.router.navigate(['Login'])
-      return true;
+    if (!this.userData){
+      this.router.navigate(['Home']);
+      return false;
     }
-    if (!this.userData.isVerified) {
+    if (!this.userData.emailVerified) {
       this.verifyEmail()
       this.router.navigate(['Home']);
       return false;
@@ -109,6 +109,7 @@ export class AuthService {
   }
 
   Logout() {
+    this.userData = undefined
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['Login']);
