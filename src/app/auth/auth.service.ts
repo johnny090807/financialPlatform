@@ -30,6 +30,10 @@ export class AuthService {
   }
 
   canActivate(): boolean {
+    if(!this.userData){
+      this.router.navigate(['Login'])
+      return true;
+    }
     if (!this.userData.isVerified) {
       this.verifyEmail()
       this.router.navigate(['Home']);
