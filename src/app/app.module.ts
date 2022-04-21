@@ -32,6 +32,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatDividerModule} from "@angular/material/divider";
 import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component';
+import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component
     HeaderComponent,
     ForgotComponent,
     InvoiceComponent,
-    InvoiceAddComponent
+    InvoiceAddComponent,
+    InvoiceListComponent
   ],
   imports: [
     BrowserModule,

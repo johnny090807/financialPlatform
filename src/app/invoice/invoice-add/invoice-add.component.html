@@ -1,29 +1,61 @@
-<form action="" [formGroup]="invoiceForm">
+<form action="" class="column is-flex is-flex-direction-column" [formGroup]="invoiceForm">
   <mat-form-field appearance="fill">
-    <mat-label>Costs</mat-label>
-    <input type="number"
+    <mat-label>Date</mat-label>
+    <input type="date"
            matInput
            placeholder=""
+           formControlName="date"
+           required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Period</mat-label>
+    <input type="text"
+             matInput
+             placeholder=""
+             formControlName="period"
+             required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input type="text"
+           matInput
+           formControlName="name"
+           required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input type="text"
+           matInput
+           formControlName="description"
+           required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Invoice number</mat-label>
+    <input type="text"
+           matInput
+           formControlName="invoiceNumber"
+           required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Cost</mat-label>
+    <input type="text"
+           matInput
            formControlName="cost"
            required>
   </mat-form-field>
-  <br>
   <mat-form-field appearance="fill">
     <mat-label>Type</mat-label>
     <input type="text"
-             matInput
-             placeholder="Phone costs"
-             formControlName="type"
-             required>
+           matInput
+           formControlName="type"
+           required>
   </mat-form-field>
-  <br>
   <mat-form-field appearance="fill">
     <mat-label>VAT</mat-label>
     <input type="number"
            matInput
            formControlName="VAT"
            required>
-      </mat-form-field>
-  <br>
-  <button mat-raised-button (click)="submit()" color="primary">SUBMIT</button>
+  </mat-form-field>
+  <button mat-raised-button (click)="submit()" [disabled]="!invoiceForm.valid" color="primary">SUBMIT</button>
 </form>

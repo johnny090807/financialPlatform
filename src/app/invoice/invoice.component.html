@@ -1,55 +1,94 @@
 <div *ngIf="loading" style="position: absolute; background: rgba(0,0,0,0.5); padding-left: 45%; padding-top: 45%; height: 100%; width: 100%">
-  <h1 *ngIf="!this.authService.isVerified" style="left: 39%; top:40%; position: inherit; color: white">You're not verified yet</h1>
   <mat-spinner style="position: absolute; margin: auto"></mat-spinner>
 </div>
 <p class="title ml-6">Invoice tables</p>
 <mat-divider class="mb-6"></mat-divider>
 
-<div class="columns ml-2 mr-2">
-  <div class="column is-flex-grow-1 box is-flex-direction-column" style="min-width: 200px">
-    <a class="mb-2" (click)="addNewList()"> <mat-icon>add</mat-icon> Add a new list</a>
-    <div class="is-flex mb-2" *ngFor="let i = index; let list of lists" (click)="selectInvoice(list.uid)">
-      <a class="is-flex-grow-1">{{list.name}}</a>
-      <div class="">
-        <a><mat-icon class="is-size-6" (click)="editList(list.uid, i)" color="primary">edit</mat-icon></a>
-        <a><mat-icon class="is-size-6" (click)="deleteFromLists(list.uid)" color="primary">delete</mat-icon></a>
+<div class="columns m-2">
+  <div class="column is-half-desktop is-full-mobile is-flex-grow-1 box is-flex-direction-column" style="min-width: 200px">
+    <div class="columns">
+      <mat-form-field appearance="fill" style="" class="column is-half">
+        <mat-icon matPrefix>search</mat-icon>
+        <form [formGroup]="searchForm">
+          <input matInput placeholder="Search" formControlName="search">
+        </form>
+      </mat-form-field>
+    </div>
+    <div class="greyscale-hover is-flex mb-2 box" *ngFor="let list of lists" (click)="goToInvoiceDetails(list.uid)">
+      <div class="is-flex-grow-1">
+        <p class="mr-6">{{list.name}}</p>
+        <p class="mr-6">{{list.balance | currency: "EUR"}}</p>
+        <p class="mr-6">{{list.startDate | date}}</p>
+        <p class="mr-6">{{list.endDate | date}}</p>
+
+      </div>
+      <div>
+        <a><mat-icon class="is-size-4" (click)="fillFormList(list)" color="primary">edit</mat-icon></a>
+        <a><mat-icon class="is-size-4" (click)="deleteFromLists(list.uid)" color="primary">delete</mat-icon></a>
       </div>
     </div>
   </div>
-  <div class="column is-flex-grow-5 box ml-1">
-    <p *ngIf="dataSource.length == 0" class="has-text-centered">Nothing selected yet, or no data available.</p>
-    <button (click)="addNewInvoice()" *ngIf="this.selectedInvoiceList != null && editing == false" mat-raised-button color="primary" style="position: absolute; top: 14%; right: 10%;">Add invoice</button>
-    <button (click)="addNewInvoice()" *ngIf="this.selectedInvoiceList != null && editing == true" mat-raised-button color="primary" style="position: absolute; top: 14%; right: 10%;">Close invoice edit</button>
-    <table *ngIf="dataSource.length != 0" mat-table [dataSource]="dataSource" class="" style="width: 100%">
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> UID </th>
-        <td mat-cell *matCellDef="let element"> {{element.uid}} </td>
-      </ng-container>
-      <ng-container matColumnDef="element">
-        <th mat-header-cell *matHeaderCellDef> cost </th>
-        <td mat-cell *matCellDef="let element"> {{element.cost | currency: "EUR"}} </td>
-      </ng-container>
-      <ng-container matColumnDef="subelement">
-        <th mat-header-cell *matHeaderCellDef> Type of cost </th>
-        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-      </ng-container>
-      <ng-container matColumnDef="location">
-        <th mat-header-cell *matHeaderCellDef> VAT </th>
-        <td mat-cell *matCellDef="let element"> {{element.VAT | percent}} </td>
-      </ng-container>
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let element">
-          <a (click)="editInvoice(element)"><mat-icon>edit</mat-icon></a>
-          <a (click)="deleteInvoice(element.uid)"><mat-icon>delete</mat-icon></a>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  </div>
-  <div class="column is-flex is-flex-wrap-wrap" *ngIf="editing">
-    <app-invoice-add [editingInvoice]="this.editingInvoice" [loggedInUser]="this.loggedInUser" [invoiceUid]="selectedInvoiceList"></app-invoice-add>
+  <div class="column is-half-desktop">
+    <form action="" [formGroup]="invoiceListForm" class="is-flex is-flex-direction-column">
+      <mat-form-field appearance="fill">
+        <mat-label>Company name</mat-label>
+        <input type="text"
+               matInput
+               placeholder="Company Name"
+               formControlName="name"
+               required
+               [ngClass]="{'is-danger': invoiceListForm.controls.name.invalid &&
+                           (
+                           invoiceListForm.controls.name.dirty ||
+                           invoiceListForm.controls.name.touched &&
+                           invoiceListForm.controls.name.errors?.required)}">
+        <mat-error *ngIf="this.invoiceListForm.controls.name.errors?.required">This field must be filled in.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Balance</mat-label>
+        <input type="number"
+               matInput
+               placeholder="Balance"
+               formControlName="balance"
+               required
+               [ngClass]="{'is-danger': invoiceListForm.controls.balance.invalid &&
+                           (
+                           invoiceListForm.controls.balance.dirty ||
+                           invoiceListForm.controls.balance.touched &&
+                           invoiceListForm.controls.balance.errors?.required)}">
+        <mat-error *ngIf="this.invoiceListForm.controls.balance.errors?.required">This field must be filled in.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Start date</mat-label>
+        <input type="date"
+               matInput
+               placeholder="Start date"
+               formControlName="startDate"
+               required
+               [ngClass]="{'is-danger': invoiceListForm.controls.startDate.invalid &&
+                           (
+                           invoiceListForm.controls.startDate.dirty ||
+                           invoiceListForm.controls.startDate.touched &&
+                           invoiceListForm.controls.startDate.errors?.required)}">
+        <mat-error *ngIf="this.invoiceListForm.controls.startDate.errors?.required">This field must be filled in.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>End date</mat-label>
+        <input type="date"
+               matInput
+               placeholder="End date"
+               formControlName="endDate"
+               required
+               [ngClass]="{'is-danger': invoiceListForm.controls.endDate.invalid &&
+                           (
+                           invoiceListForm.controls.endDate.dirty ||
+                           invoiceListForm.controls.endDate.touched &&
+                           invoiceListForm.controls.endDate.errors?.required)}">
+        <mat-error *ngIf="this.invoiceListForm.controls.endDate.errors?.required">This field must be filled in.</mat-error>
+      </mat-form-field>
+      <button *ngIf="editing == false" (click)="addNewList()" [disabled]="!this.invoiceListForm.valid" mat-raised-button color="primary">ADD</button>
+      <button *ngIf="editing == true" (click)="editList()" [disabled]="!this.invoiceListForm.valid" mat-raised-button color="primary">SAVE</button>
+      <button (click)="clearForm()" mat-raised-button color="accent">CLEAR</button>
+    </form>
   </div>
 </div>

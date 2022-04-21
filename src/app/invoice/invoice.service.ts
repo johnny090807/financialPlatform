@@ -6,6 +6,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthService} from "../auth/auth.service";
 import {User} from "../objects/user";
 import {Invoice} from "../objects/invoice";
+import {InvoiceLists} from "../objects/invoiceLists";
+import {collection, getDocs, orderBy, query, where} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -20,14 +22,19 @@ export class InvoiceService {
     private _snackBar: MatSnackBar,
     private authService: AuthService) { }
 
-  addInvoiceListToUser(user: User){
+  addInvoiceListToUser(user: User, list: InvoiceLists){
     let uid = this.afs.createId();
     const invoiceRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}/invoiceLists/${uid}`
     )
-    const invoiceList = {
+    let invoiceList : InvoiceLists = {
       uid: uid,
-      name: "New list"
+      name: list.name,
+      name_lowercase: list.name.toLowerCase(),
+      balance: list.balance,
+      startDate: list.startDate,
+      endDate: list.endDate
+
     }
     return invoiceRef.set(invoiceList, {
       merge: true
@@ -46,8 +53,11 @@ export class InvoiceService {
     })
 
   }
-  getAllInvoiceListsByUser(user: User) {
-    return this.afs.collection(`users/${user.uid}/invoiceLists`).valueChanges();
+  getAllInvoiceListsByUser(user: User, search: string) {
+    return this.afs.collection(`users/${user.uid}/invoiceLists`).ref
+      .where('name_lowercase', '>=', search.toLowerCase()).where('name_lowercase', '<=', search.toLowerCase() + '~')
+      .orderBy("name_lowercase")
+      .get()
   }
 
   getAllInvoices(user: User, invoiceUID: string) {
@@ -78,8 +88,19 @@ export class InvoiceService {
     const invoiceRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}/invoiceLists/${uid}/invoices/${invoice.uid}`
     )
+    console.log(user, uid, invoice)
     return invoiceRef.set(invoice, {
       merge: true
     })
+  }
+
+  updateInvoiceList(user: any, list: InvoiceLists) {
+    const invoiceRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}/invoiceLists/${list.uid}`
+    )
+    return invoiceRef.set(list, {
+      merge: true
+    })
+
   }
 }
