@@ -6,24 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-add/invoice-add.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-add/invoice-add.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-add/invoice-add.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-add/invoice-add.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/invoice/accountancy.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/accountancy.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/accountancy.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/accountancy.component.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/accountancy.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/accountancy.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/accountancy.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/accountancy.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/objects/invoice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/objects/invoice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/objects/invoiceLists.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/objects/invoiceLists.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +133,7 @@
       <workItem from="1649751948607" duration="11910000" />
       <workItem from="1649769505679" duration="8401000" />
       <workItem from="1649837021724" duration="23641000" />
-      <workItem from="1650463938198" duration="20409000" />
+      <workItem from="1650463938198" duration="21358000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, logout, home and header">
       <created>1649345582057</created>
@@ -200,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650535902044</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="changes to the invoicelists and invoices">
+      <created>1650983267951</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1650983267951</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -259,7 +250,8 @@
     <MESSAGE value="added forgot component" />
     <MESSAGE value="small changes" />
     <MESSAGE value="changed invoiceList, invoices and addition of invoices" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed invoiceList, invoices and addition of invoices" />
+    <MESSAGE value="changes to the invoicelists and invoices" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes to the invoicelists and invoices" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/firebase.json">

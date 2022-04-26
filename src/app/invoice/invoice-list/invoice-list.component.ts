@@ -31,7 +31,6 @@ export class InvoiceListComponent implements OnInit {
       data.forEach((data) => {
         this.dataSource.push(data.data())
       })
-      this.updateCalculatedBalance()
     })
   }
 
@@ -53,20 +52,6 @@ export class InvoiceListComponent implements OnInit {
       this.editing = true
 
     }, 500)
-  }
-
-  updateCalculatedBalance(){
-    this.invoiceService.getSingleInvoiceList(this.loggedInUser, this.invoiceListId).subscribe(data => {
-      let currentBalance = data.data()!.balance
-      this.dataSource.map((data:any) => {
-        currentBalance += Number(data.cost)
-      })
-      let changes = {
-        'calculated_balance': currentBalance,
-        'uid': this.invoiceListId
-      }
-      this.invoiceService.updateInvoiceList(this.loggedInUser,changes)
-    })
   }
 
   notPayed(element: Invoice) {

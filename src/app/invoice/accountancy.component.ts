@@ -59,6 +59,7 @@ export class AccountancyComponent implements OnInit {
       data.forEach((item: any ) => {
         this.lists.push(item.data())
       })
+      this.updateBalance()
       this.loading = false
     })
   }
@@ -129,5 +130,20 @@ export class AccountancyComponent implements OnInit {
 
   goToInvoiceDetails(uid: string) {
     this.router.navigate(['/Invoice/' + uid])
+  }
+  updateBalance(){
+    this.lists.forEach(list => {
+      this.invoiceService.getAllInvoices(this.loggedInUser,list.uid).onSnapshot(data => {
+        let currentBalance = list.balance
+        data.forEach((invoice:any) => {
+          currentBalance += Number(invoice.data().cost)
+        })
+        let changes = {
+            'calculated_balance': currentBalance,
+            'uid': list.uid
+          }
+        this.invoiceService.updateInvoiceList(this.loggedInUser,changes)
+      })
+    })
   }
 }
