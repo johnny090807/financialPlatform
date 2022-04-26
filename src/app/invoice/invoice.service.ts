@@ -7,20 +7,22 @@ import {AuthService} from "../auth/auth.service";
 import {User} from "../objects/user";
 import {Invoice} from "../objects/invoice";
 import {InvoiceLists} from "../objects/invoiceLists";
-import {collection, getDocs, orderBy, query, where} from "@angular/fire/firestore";
+import {doc, getDoc, getFirestore, onSnapshot} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvoiceService {
+  db = getFirestore()
 
-  constructor(
+    constructor(
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone,
     private _snackBar: MatSnackBar,
-    private authService: AuthService) { }
+    private authService: AuthService) {
+  }
 
   addInvoiceListToUser(user: User, list: InvoiceLists){
     let uid = this.afs.createId();
@@ -60,8 +62,12 @@ export class InvoiceService {
       .get()
   }
 
+  getSingleInvoiceList(user: User, invoiceListId: string) {
+    return this.afs.collection(`users`).doc(user.uid).collection('invoiceLists').doc(invoiceListId).get()
+  }
+
   getAllInvoices(user: User, invoiceUID: string) {
-    return this.afs.collection(`users/${user.uid}/invoiceLists/${invoiceUID}/invoices`).valueChanges();
+    return this.afs.collection(`users/${user.uid}/invoiceLists/${invoiceUID}/invoices`).ref.orderBy("date")
   }
 
   deleteInvoiceList(user: User, uid: string) {
@@ -72,29 +78,16 @@ export class InvoiceService {
     return this.afs.collection(`users`).doc(user.uid).collection("invoiceLists").doc(uid).collection("invoices").doc(invoiceUid).delete();
   }
 
-  updateInvoiceListName(user: User, uid: string, text: string) {
-    const invoiceRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}/invoiceLists/${uid}`
-    )
-    const invoiceList = {
-      name: text
-    }
-    return invoiceRef.set(invoiceList, {
-      merge: true
-    })
-  }
-
-  updateInvoiceOnInvoiceList(user: User, uid: string, invoice: Invoice) {
+  updateInvoiceOnInvoiceList(user: User, uid: string, invoice: any) {
     const invoiceRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}/invoiceLists/${uid}/invoices/${invoice.uid}`
     )
-    console.log(user, uid, invoice)
     return invoiceRef.set(invoice, {
       merge: true
     })
   }
 
-  updateInvoiceList(user: any, list: InvoiceLists) {
+  updateInvoiceList(user: any, list: any) {
     const invoiceRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}/invoiceLists/${list.uid}`
     )

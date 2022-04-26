@@ -3,6 +3,7 @@ export interface InvoiceLists{
   name: string,
   name_lowercase: string,
   balance: number,
+  calculated_balance?: number,
   startDate: number,
   endDate: number
 }

@@ -38,7 +38,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Cost</mat-label>
-    <input type="text"
+    <input type="number"
            matInput
            formControlName="cost"
            required>
@@ -48,7 +48,13 @@
     <input type="text"
            matInput
            formControlName="type"
+           [matAutocomplete]="auto"
            required>
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>VAT</mat-label>
@@ -58,4 +64,5 @@
            required>
   </mat-form-field>
   <button mat-raised-button (click)="submit()" [disabled]="!invoiceForm.valid" color="primary">SUBMIT</button>
+  <button (click)="clearForm()" mat-raised-button color="accent" matTooltip="Click this to create a new company invoice list">CLEAR</button>
 </form>

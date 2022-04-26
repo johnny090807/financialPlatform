@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {InvoiceService} from "../invoice.service";
 import {Invoice} from "../../objects/invoice";
 import {ActivatedRoute} from "@angular/router";
+import {map, startWith} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-invoice-add',
@@ -23,15 +25,22 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
     cost: new FormControl("", Validators.required),
     VAT: new FormControl("", Validators.required),
   })
+  options: string[] = ['Travel costs', 'Pension', 'Study costs', 'Office equipment', 'Small inventory', 'Literature', 'Telephone costs', 'Computer costs', 'Foundation costs', 'Promotion/Sponsor costs', 'Representation costs', 'Bank costs', 'Insurance', 'Other general costs', 'Deprecation inventory'];
+  filteredOptions!: Observable<string[]>;
+
   constructor(private invoiceService: InvoiceService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.filteredOptions = this.invoiceForm.controls.type.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value)),
+    );
     if (this.editingInvoice != undefined){
       this.invoiceForm.patchValue(this.editingInvoice)
     }
-    console.log(this.editingInvoice, this.invoiceUid, this.loggedInUser)
     this.invoiceUid = this.route.snapshot.paramMap.get('listId')
+
   }
   ngOnDestroy() {
     this.editingInvoice = undefined
@@ -50,6 +59,7 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
         "cost": i.cost,
         "date": i.date,
         "period": i.period,
+        "payed": true,
         "uid": this.editingInvoice.uid
       }
       this.invoiceService.updateInvoiceOnInvoiceList(
@@ -68,6 +78,7 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
       "date": i.date,
       "period": i.period,
       "cost": i.cost,
+      "payed": true
     }
 
     this.invoiceService.addInvoiceToInvoiceList(
@@ -76,4 +87,15 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
       invoice)
   }
 
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  clearForm() {
+    this.invoiceForm.reset()
+    this.editingInvoice = undefined
+
+  }
 }

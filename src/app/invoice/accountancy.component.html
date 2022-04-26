@@ -10,21 +10,22 @@
       <mat-form-field appearance="fill" style="" class="column is-half">
         <mat-icon matPrefix>search</mat-icon>
         <form [formGroup]="searchForm">
-          <input matInput placeholder="Search" formControlName="search">
+          <input matInput placeholder="Search" formControlName="search"  matTooltip="Search through invoice lists">
         </form>
       </mat-form-field>
     </div>
-    <div class="greyscale-hover is-flex mb-2 box" *ngFor="let list of lists" (click)="goToInvoiceDetails(list.uid)">
-      <div class="is-flex-grow-1">
-        <p class="mr-6">{{list.name}}</p>
-        <p class="mr-6">{{list.balance | currency: "EUR"}}</p>
-        <p class="mr-6">{{list.startDate | date}}</p>
-        <p class="mr-6">{{list.endDate | date}}</p>
+    <div class="greyscale-hover is-flex mb-2 box" *ngFor="let list of lists">
+      <div class="is-flex-grow-1" (click)="goToInvoiceDetails(list.uid)">
+        <p class="mr-6">Name: {{list.name}}</p>
+        <p class="mr-6">Starting balance: {{list.balance | currency: "EUR"}}</p>
+        <p class="mr-6">Start date: {{list.startDate | date}}</p>
+        <p class="mr-6">End date: {{list.endDate | date}}</p>
+        <p class="mr-6">Current balance: {{list.calculated_balance| currency: "EUR"}}</p>
 
       </div>
       <div>
-        <a><mat-icon class="is-size-4" (click)="fillFormList(list)" color="primary">edit</mat-icon></a>
-        <a><mat-icon class="is-size-4" (click)="deleteFromLists(list.uid)" color="primary">delete</mat-icon></a>
+        <a><mat-icon class="" (click)="fillFormList(list)" color="primary" matTooltip="Click to edit this">edit</mat-icon></a>
+        <a><mat-icon class="" (click)="deleteFromLists(list.uid)" color="primary" matTooltip="Click to delete this">delete</mat-icon></a>
       </div>
     </div>
   </div>
@@ -88,7 +89,7 @@
       </mat-form-field>
       <button *ngIf="editing == false" (click)="addNewList()" [disabled]="!this.invoiceListForm.valid" mat-raised-button color="primary">ADD</button>
       <button *ngIf="editing == true" (click)="editList()" [disabled]="!this.invoiceListForm.valid" mat-raised-button color="primary">SAVE</button>
-      <button (click)="clearForm()" mat-raised-button color="accent">CLEAR</button>
+      <button (click)="clearForm()" mat-raised-button color="accent" matTooltip="Click this to create a new company invoice list">CLEAR</button>
     </form>
   </div>
 </div>

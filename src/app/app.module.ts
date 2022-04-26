@@ -27,12 +27,14 @@ import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { ForgotComponent } from './auth/forgot/forgot.component';
-import { InvoiceComponent } from './invoice/invoice.component';
+import { AccountancyComponent } from './invoice/accountancy.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatDividerModule} from "@angular/material/divider";
 import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component';
 import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -44,7 +46,7 @@ import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.compon
     HomeComponent,
     HeaderComponent,
     ForgotComponent,
-    InvoiceComponent,
+    AccountancyComponent,
     InvoiceAddComponent,
     InvoiceListComponent
   ],
@@ -71,6 +73,8 @@ import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.compon
     MatTableModule,
     MatProgressSpinnerModule,
     MatDividerModule,
+    MatAutocompleteModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

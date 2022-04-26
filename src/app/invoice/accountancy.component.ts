@@ -3,23 +3,19 @@ import {AuthService} from "../auth/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {InvoiceService} from "./invoice.service";
 import {InvoiceLists} from "../objects/invoiceLists";
-import {Invoice} from "../objects/invoice";
 import {FormControl, FormGroup} from "@angular/forms";
 import {formatDate} from "@angular/common";
-import {QuerySnapshot} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-invoice',
-  templateUrl: './invoice.component.html',
-  styleUrls: ['./invoice.component.scss']
+  templateUrl: './accountancy.component.html',
+  styleUrls: ['./accountancy.component.scss']
 })
-export class InvoiceComponent implements OnInit {
+export class AccountancyComponent implements OnInit {
   lists: InvoiceLists[] = []
   loading = true
   loggedInUser: any
-  selectedInvoiceList:any
-  dataSource:any = []
   editing = false
   editingList:any
   searchForm = new FormGroup({
@@ -53,6 +49,7 @@ export class InvoiceComponent implements OnInit {
     this.authService.verifyEmail()
     this.loggedInUser = JSON.parse(localStorage.getItem('user')!)
     this.getAllInvoiceLists()
+
   }
 
   getAllInvoiceLists(){
@@ -117,17 +114,6 @@ export class InvoiceComponent implements OnInit {
     }
     this.invoiceService.updateInvoiceList(this.loggedInUser, list)
     this.getAllInvoiceLists()
-  }
-
-  selectInvoice(uid: string) {
-    this.loading = true;
-    this.selectedInvoiceList = uid;
-    this.invoiceService.getAllInvoices(this.loggedInUser, uid).subscribe(data => {
-      this.dataSource = data;
-      this.loading = false;
-    }, error => {
-      this._snackBar.open(error.message, "ok")
-    })
   }
 
   clearForm() {
