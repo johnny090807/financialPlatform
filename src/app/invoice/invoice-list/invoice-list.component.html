@@ -1,6 +1,7 @@
 <!--<div class="columns">-->
 <button (click)="addNewInvoice()" *ngIf="editing == false" mat-raised-button color="primary">Add invoice</button>
 <button (click)="addNewInvoice()" *ngIf="editing == true" mat-raised-button color="primary">Close invoice edit</button>
+<button [routerLink]="'Charts/'" mat-stroked-button color="primary">Go to charts</button>
   <p *ngIf="dataSource.length == 0" class="has-text-centered">There are no invoices yet.</p>
     <table *ngIf="dataSource.length != 0" mat-table [dataSource]="dataSource" style="width: 100%">
       <ng-container matColumnDef="date">
