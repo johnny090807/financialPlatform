@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Invoice} from "../objects/invoice";
 
 @Component({
   selector: 'app-charts',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./charts.component.scss']
 })
 export class ChartsComponent implements OnInit {
+  @Input() data:any
   options: any;
   constructor() {}
 
   ngOnInit(): void {
+    console.log(this.data)
     const xAxisData = [];
     const data1 = [];
     const data2 = [];

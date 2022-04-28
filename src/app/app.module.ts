@@ -37,6 +37,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { ChartsComponent } from './charts/charts.component';
 import {NgxEchartsModule} from "ngx-echarts";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import {NgxEchartsModule} from "ngx-echarts";
     MatTooltipModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
-    })
+    }),
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
