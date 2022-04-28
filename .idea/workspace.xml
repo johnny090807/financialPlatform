@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/accountancy.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/accountancy.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/charts/charts.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/charts/charts.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/charts/charts.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/charts/charts.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +117,11 @@
   <component name="Push.Settings">
     <option name="SHOW_DETAILS_PANEL" value="false" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\HR\minor 1\FinancialPlatform\financialPlatform\src\app" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -134,6 +143,7 @@
       <workItem from="1649769505679" duration="8401000" />
       <workItem from="1649837021724" duration="23641000" />
       <workItem from="1650463938198" duration="21358000" />
+      <workItem from="1651143916543" duration="4800000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, logout, home and header">
       <created>1649345582057</created>

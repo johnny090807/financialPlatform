@@ -35,6 +35,8 @@ import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component
 import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { ChartsComponent } from './charts/charts.component';
+import {NgxEchartsModule} from "ngx-echarts";
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     ForgotComponent,
     AccountancyComponent,
     InvoiceAddComponent,
-    InvoiceListComponent
+    InvoiceListComponent,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,9 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatDividerModule,
     MatAutocompleteModule,
     MatTooltipModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
