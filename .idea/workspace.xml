@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/charts/charts.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/charts/charts.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/charts/charts.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/charts/charts.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +139,7 @@
       <workItem from="1649769505679" duration="8401000" />
       <workItem from="1649837021724" duration="23641000" />
       <workItem from="1650463938198" duration="21358000" />
-      <workItem from="1651143916543" duration="6014000" />
+      <workItem from="1651143916543" duration="6310000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, logout, home and header">
       <created>1649345582057</created>
@@ -206,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651149064577</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added data from datasource to charts.component.ts">
+      <created>1651150302006</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651150302006</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -267,7 +272,8 @@
     <MESSAGE value="changed invoiceList, invoices and addition of invoices" />
     <MESSAGE value="changes to the invoicelists and invoices" />
     <MESSAGE value="added charts" />
-    <option name="LAST_COMMIT_MESSAGE" value="added charts" />
+    <MESSAGE value="added data from datasource to charts.component.ts" />
+    <option name="LAST_COMMIT_MESSAGE" value="added data from datasource to charts.component.ts" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/firebase.json">
