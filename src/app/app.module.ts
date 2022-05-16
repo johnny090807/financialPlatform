@@ -38,6 +38,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import { ChartsComponent } from './charts/charts.component';
 import {NgxEchartsModule} from "ngx-echarts";
 import {MatTabsModule} from "@angular/material/tabs";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
