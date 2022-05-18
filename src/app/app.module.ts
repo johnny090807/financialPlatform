@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { LogoutComponent } from './auth/logout/logout.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
@@ -45,7 +44,6 @@ import {MatTabsModule} from "@angular/material/tabs";
     AuthComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent,
     HomeComponent,
     HeaderComponent,
     ForgotComponent,
