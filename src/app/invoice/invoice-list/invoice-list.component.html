@@ -3,6 +3,9 @@
   <mat-tab label="Overview">
     <button (click)="addNewInvoice()" *ngIf="editing == false" mat-raised-button color="primary">Add invoice</button>
     <button (click)="addNewInvoice()" *ngIf="editing == true" mat-raised-button color="primary">Close invoice edit</button>
+    <div class="" *ngIf="editing">
+      <app-invoice-add [editingInvoice]="this.editingInvoice" [loggedInUser]="this.loggedInUser"></app-invoice-add>
+    </div>
     <p *ngIf="dataSource.length == 0" class="has-text-centered">There are no invoices yet.</p>
     <table *ngIf="dataSource.length != 0" mat-table [dataSource]="dataSource" style="width: 100%">
       <ng-container matColumnDef="date">
@@ -48,9 +51,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row [ngClass]="row.payed? 'bg-none greyscale-hover': 'bg-red bg-red-hover'" *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <div class="" *ngIf="editing">
-      <app-invoice-add [editingInvoice]="this.editingInvoice" [loggedInUser]="this.loggedInUser"></app-invoice-add>
-    </div>
   </mat-tab>
   <mat-tab label="Charts" *ngIf="!loading">
     <app-charts [data]="dataSource"></app-charts>
