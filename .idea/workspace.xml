@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/logout/logout.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/logout/logout.component.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/logout/logout.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/logout/logout.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/logout/logout.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/logout/logout.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +24,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -100,12 +112,17 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="ts.external.directory.path" value="D:\HR\minor 1\FinancialPlatform\financialPlatform\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="Push.Settings">
     <option name="SHOW_DETAILS_PANEL" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\HR\minor 1\FinancialPlatform\financialPlatform\src\app" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -126,7 +143,11 @@
       <workItem from="1649679987613" duration="180000" />
       <workItem from="1649751948607" duration="11910000" />
       <workItem from="1649769505679" duration="8401000" />
-      <workItem from="1649837021724" duration="5039000" />
+      <workItem from="1649837021724" duration="23641000" />
+      <workItem from="1650463938198" duration="21358000" />
+      <workItem from="1651143916543" duration="7346000" />
+      <workItem from="1651219411707" duration="1764000" />
+      <workItem from="1652694516577" duration="915000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, logout, home and header">
       <created>1649345582057</created>
@@ -170,7 +191,42 @@
       <option name="project" value="LOCAL" />
       <updated>1649427306183</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="changed invoiceList, invoices and addition of invoices">
+      <created>1650535902043</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1650535902044</updated>
+    </task>
+    <task id="LOCAL-00008" summary="changes to the invoicelists and invoices">
+      <created>1650983267951</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1650983267951</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added charts">
+      <created>1651149064577</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1651149064577</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added data from datasource to charts.component.ts">
+      <created>1651150302006</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651150302006</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added data from datasource to charts.component.ts">
+      <created>1651150586240</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1651150586240</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -228,7 +284,11 @@
     <MESSAGE value="added check if someone is verified" />
     <MESSAGE value="added forgot component" />
     <MESSAGE value="small changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="small changes" />
+    <MESSAGE value="changed invoiceList, invoices and addition of invoices" />
+    <MESSAGE value="changes to the invoicelists and invoices" />
+    <MESSAGE value="added charts" />
+    <MESSAGE value="added data from datasource to charts.component.ts" />
+    <option name="LAST_COMMIT_MESSAGE" value="added data from datasource to charts.component.ts" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/firebase.json">

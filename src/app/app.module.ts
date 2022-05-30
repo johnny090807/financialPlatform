@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { LogoutComponent } from './auth/logout/logout.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
@@ -27,11 +26,18 @@ import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { ForgotComponent } from './auth/forgot/forgot.component';
-import { InvoiceComponent } from './invoice/invoice.component';
+import { AccountancyComponent } from './invoice/accountancy.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatDividerModule} from "@angular/material/divider";
 import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component';
+import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import { ChartsComponent } from './charts/charts.component';
+import {NgxEchartsModule} from "ngx-echarts";
+import {MatTabsModule} from "@angular/material/tabs";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -39,12 +45,13 @@ import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component
     AuthComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent,
     HomeComponent,
     HeaderComponent,
     ForgotComponent,
-    InvoiceComponent,
-    InvoiceAddComponent
+    AccountancyComponent,
+    InvoiceAddComponent,
+    InvoiceListComponent,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +76,12 @@ import { InvoiceAddComponent } from './invoice/invoice-add/invoice-add.component
     MatTableModule,
     MatProgressSpinnerModule,
     MatDividerModule,
+    MatAutocompleteModule,
+    MatTooltipModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    }),
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,62 @@
+<body>
+<mat-card class="example-card1">
+  <mat-card-title>• Working Capital</mat-card-title>
+  <mat-card-content>
+    <h1>€1350</h1>
+  </mat-card-content>
+</mat-card>
+<br>
+<mat-card class="example-card2">
+  <mat-card-title>• Liquidity Ratio</mat-card-title>
+  <mat-card-content>
+    <h1>2.13(213%)</h1>
+  </mat-card-content>
+</mat-card>
+<mat-card class="example-card3">
+  <mat-card-title>• Equity Ratio</mat-card-title>
+  <mat-card-content>
+    <h1>75.4%</h1>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="example-card4">
+  <mat-card-title>• Debt Equity</mat-card-title>
+  <mat-card-content>
+    <h1>1.03(103%)</h1>
+  </mat-card-content>
+</mat-card>
+<br>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="euro">
+    <th mat-header-cell *matHeaderCellDef> Euro </th>
+    <td mat-cell *matCellDef="let element"> {{element.euro}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;let index= dataIndex;" [ngClass]="{alternate:index==1}"></tr>
+</table>
+<br>
+<div echarts [options]="option1" class="demo-echarts1" style="width: 470px;height:250px;"></div>
+<br>
+<div echarts [options]="option2" class="demo-echarts2" style="width: 470px;height:250px;bottom:186px"></div>
+<br>
+<div echarts [options]="options" class="demo-echarts" style="width: 950px;height:305px;"></div>
+<br>
+
+</body>
+
