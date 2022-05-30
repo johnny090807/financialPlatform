@@ -55,5 +55,8 @@
   <mat-tab label="Charts" *ngIf="!loading">
     <app-charts [data]="dataSource"></app-charts>
   </mat-tab>
+  <mat-tab label="Memorial" *ngIf="!loading">
+    <app-invoice-not-payed [invoiceListId]="this.invoiceListId" [dataSource]="dataSource"></app-invoice-not-payed>
+  </mat-tab>
 </mat-tab-group>
 
