@@ -38,6 +38,7 @@ import { ChartsComponent } from './charts/charts.component';
 import {NgxEchartsModule} from "ngx-echarts";
 import {MatTabsModule} from "@angular/material/tabs";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import { BalanceComponent } from './balance/balance.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     AccountancyComponent,
     InvoiceAddComponent,
     InvoiceListComponent,
-    ChartsComponent
+    ChartsComponent,
+    BalanceComponent,
   ],
   imports: [
     BrowserModule,

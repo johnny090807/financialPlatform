@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-select [(ngModel)]="selectedValue">
+    <mat-option *ngFor="let cost of this.costs" [value]="cost.cost">
+      {{cost.type}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+the cost was: {{selectedValue}}

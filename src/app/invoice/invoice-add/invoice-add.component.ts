@@ -5,6 +5,7 @@ import {Invoice} from "../../objects/invoice";
 import {ActivatedRoute} from "@angular/router";
 import {map, startWith} from "rxjs/operators";
 import {Observable} from "rxjs";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-invoice-add',
@@ -25,13 +26,15 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
     cost: new FormControl("", Validators.required),
     VAT: new FormControl("", Validators.required),
   })
-  options: string[] = ['Travel costs', 'Pension', 'Study costs', 'Office equipment', 'Small inventory', 'Literature', 'Telephone costs', 'Computer costs', 'Foundation costs', 'Promotion/Sponsor costs', 'Representation costs', 'Bank costs', 'Insurance', 'Other general costs', 'Deprecation inventory'];
+  options: string[] = ['Travel costs', 'Pension', 'Study costs', 'Office equipment', 'Small inventory', 'Literature', 'Telephone costs', 'Computer costs', 'Foundation costs', 'Promotion/Sponsor costs', 'Representation costs', 'Bank costs', 'Insurance', 'Other general costs', 'Deprecation inventory','Cash','Other Assets','Other Liabilities'];
   filteredOptions!: Observable<string[]>;
 
   constructor(private invoiceService: InvoiceService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private _snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
+
     this.filteredOptions = this.invoiceForm.controls.type.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value)),
@@ -65,7 +68,9 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
       this.invoiceService.updateInvoiceOnInvoiceList(
         this.loggedInUser,
         this.invoiceUid,
-        invoice)
+        invoice).then(() => {
+        this._snackbar.open("Invoice updated succesfully", "OK")
+      })
       return;
     }
 
@@ -84,7 +89,9 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
     this.invoiceService.addInvoiceToInvoiceList(
       this.loggedInUser,
       this.invoiceUid,
-      invoice)
+      invoice).then(() => {
+      this._snackbar.open("Invoice added succesfully", "OK")
+    })
   }
 
   private _filter(value: string): string[] {

@@ -19,6 +19,7 @@ export class InvoiceListComponent implements OnInit {
   editingInvoice: any;
   invoiceListId: any;
   loading = true
+  invoiceList: any;
   constructor(public authService: AuthService,
               private _snackBar: MatSnackBar,
               private invoiceService: InvoiceService,
@@ -31,7 +32,12 @@ export class InvoiceListComponent implements OnInit {
       this.dataSource = []
       data.forEach((data) => {
         this.dataSource.push(data.data())
-        this.loading = false
+
+        this.invoiceService.getSingleInvoiceList(this.loggedInUser, this.invoiceListId).subscribe(data => {
+          this.invoiceList = data.data()
+          this.loading = false
+
+        })
       })
     })
   }

@@ -52,6 +52,9 @@
       <tr mat-row [ngClass]="row.payed? 'bg-none greyscale-hover': 'bg-red bg-red-hover'" *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </mat-tab>
+  <mat-tab label="Balance" *ngIf="!loading">
+    <balanceSheet [data]="dataSource" [invoiceList]="invoiceList"></balanceSheet>
+  </mat-tab>
   <mat-tab label="Charts" *ngIf="!loading">
     <app-charts [data]="dataSource"></app-charts>
   </mat-tab>

@@ -3,6 +3,7 @@ import {Invoice} from "../objects/invoice";
 import { EChartsOption} from 'echarts';
 import{ NgxEchartsModule} from 'ngx-echarts';
 import {MatTableModule} from '@angular/material/table'
+import {anySymbolName} from "@angular/core/schematics/migrations/typed-forms/util";
 
 
 @NgModule({
@@ -19,26 +20,6 @@ import {MatTableModule} from '@angular/material/table'
 })
 export class AppModule {}
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  euro: number;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'TOTAL ASSETS', euro: 4000.00},
-  {position: 2, name: 'Current Assets', euro: 2000.00},
-  {position: 3, name: 'Cash', euro: 450.00},
-  {position: 4, name: 'Accounts Receivable', euro: 950.00},
-  {position: 5, name: 'Inventory', euro: 600.00},
-  {position: 6, name: 'TOTAL LIABILITIES', euro: 1300.00},
-  {position: 7, name: 'Current Liabilities', euro: 700.00},
-  {position: 8, name: 'Accounts Payable', euro: 420.00},
-  {position: 9, name: 'Credit Card Debit', euro: 140.00},
-  {position: 10, name: 'Bank Operating Credit', euro: 70.00},
-  {position: 11, name: 'Other Liabilities', euro: 70.00},
-];
-
 
 @Component({
   selector: 'app-charts',
@@ -52,16 +33,18 @@ export class ChartsComponent implements OnInit {
   option1: any;
   option2: any;
   //option3: any;
+  Balance: any=[];
+  cards: any=[];
+
 
   displayedColumns: string[] = ['name', 'euro'];
-  dataSource = ELEMENT_DATA;
-
 
   constructor() {
   }
 
   ngOnInit(): void {
     //const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
 
     let sum = 0;
     let sum1 = 0;
@@ -89,11 +72,125 @@ export class ChartsComponent implements OnInit {
     let add10 = 0;
     let add11 = 0;
 
+    let total_asset:any;
+    let total_lia:any;
+    let working_capital:any;
+    let equity_ratio:any;
+    let debt_ratio:any;
+    let debt_ratio1:any;
+    let current_ratio: any;
+    let current_ratio1: any;
 
 
-    console.log(this.data)
-    console.log(new Date(this.data[0].date).getMonth())
-    console.log(this.data[0].type)
+    let inventory1=0;
+    let cash=0;
+    let receivable=0;
+    let other_asset=0;
+    let payable=0;
+    let other_liability=0;
+    let tax=0;
+
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].type=='Office equipment'){
+        if(this.data[i].cost<0){
+          inventory1 = inventory1+-1*this.data[i].cost
+        }
+      }
+    }
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].type=='Small inventory'){
+        if(this.data[i].cost<0){
+          inventory1 = inventory1+-1*this.data[i].cost
+        }
+      }
+    }
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].type=='Deprecation inventory'){
+        if(this.data[i].cost>0){
+          inventory1 = inventory1-this.data[i].cost
+        }
+      }
+    }
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].type=='Cash'){
+        if(this.data[i].cost>0){
+          cash = cash+this.data[i].cost
+        }
+      }
+    }
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].payed== false){
+        if(this.data[i].cost>0){
+          receivable = receivable+this.data[i].cost
+        }
+      }
+    }
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].type== 'Other Assets'){
+        if(this.data[i].cost>0){
+          other_asset = other_asset+this.data[i].cost
+        }
+      }
+    }
+
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].payed== false){
+        if(this.data[i].cost<0){
+          payable = payable+-1*this.data[i].cost
+        }
+      }
+    }
+
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].type== 'Other Liabilities'){
+        if(this.data[i].cost<0){
+          other_liability = other_liability+-1*this.data[i].cost
+        }
+      }
+    }
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].payed==false){
+        if(this.data[i].cost>0){
+          tax= tax + this.data[i].VAT*0.01 * this.data[i].cost}
+      }
+    }
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].payed==false){
+        if(this.data[i].cost<0){
+          tax= tax + this.data[i].VAT*0.01 * -1*this.data[i].cost}
+      }
+    }
+
+    total_asset=cash+receivable+inventory1+other_asset
+    total_lia=payable+other_liability+tax
+    working_capital=total_asset-total_lia
+    equity_ratio=(working_capital/(total_asset))*100
+    debt_ratio=total_lia/working_capital
+    debt_ratio1=Math.round(debt_ratio*100)
+    current_ratio=total_asset/total_lia
+    current_ratio1=Math.round(current_ratio*100)
+
+    this.Balance.push(
+      { name: 'TOTAL ASSETS', euro: total_asset},
+      { name: 'Cash', euro: cash},
+      { name: 'Accounts Receivable', euro: receivable},
+      { name: 'Inventory', euro: inventory1},
+      { name: 'Other Assets', euro: other_asset},
+      { name: 'TOTAL LIABILITIES', euro: total_lia},
+      { name: 'Accounts Payable', euro: payable},
+      { name: 'Tax to pay', euro: tax},
+      { name: 'Other Liabilities', euro: other_liability},
+    );
+    console.log(this.Balance)
+    this.cards.push({
+      'working':working_capital,
+      'equity_ratio':equity_ratio,
+      'debt_ratio':debt_ratio.toFixed(2),
+      'debt':debt_ratio1,
+      'current_ratio':current_ratio.toFixed(2),
+      'current':current_ratio1
+    })
+    console.log(this.cards[0].debt_ratio)
 
 
     for(let i=0; i<this.data.length;i++) {
