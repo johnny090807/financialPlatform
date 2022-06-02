@@ -15,7 +15,7 @@ const routes: Routes = [
   {component: RegisterComponent, path: "Register"},
   {component: AccountancyComponent, path: "Invoice", canActivate: [AuthService]},
   {component: InvoiceListComponent, path: "Invoice/:listId", canActivate: [AuthService]},
-  {component: ChartsComponent, path: "Invoice/:listId/Charts"},
+  {component: ChartsComponent, path: "Invoice/:listId/Charts", canActivate: [AuthService]},
   {component: ForgotComponent, path: "Forgot"},
   {component: HomeComponent, path: "**"}
 ];

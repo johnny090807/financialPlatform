@@ -5,15 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/logout/logout.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/logout/logout.component.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/logout/logout.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/logout/logout.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/logout/logout.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/logout/logout.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/charts/charts.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/charts/charts.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/charts/charts.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/charts/charts.component.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +152,9 @@
       <workItem from="1650463938198" duration="21358000" />
       <workItem from="1651143916543" duration="7346000" />
       <workItem from="1651219411707" duration="1764000" />
-      <workItem from="1652694516577" duration="915000" />
+      <workItem from="1652694516577" duration="6692000" />
+      <workItem from="1653135415260" duration="1491000" />
+      <workItem from="1653307632279" duration="2625000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, logout, home and header">
       <created>1649345582057</created>
@@ -226,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651150586240</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="removed Logout component">
+      <created>1652872892657</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1652872892657</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -288,7 +302,9 @@
     <MESSAGE value="changes to the invoicelists and invoices" />
     <MESSAGE value="added charts" />
     <MESSAGE value="added data from datasource to charts.component.ts" />
-    <option name="LAST_COMMIT_MESSAGE" value="added data from datasource to charts.component.ts" />
+    <MESSAGE value="changes" />
+    <MESSAGE value="removed Logout component" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed Logout component" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/firebase.json">

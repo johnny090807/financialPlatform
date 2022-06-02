@@ -26,6 +26,7 @@ export class InvoiceListComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.loading = true
     this.loggedInUser = JSON.parse(localStorage.getItem('user')!)
     this.invoiceListId = this.route.snapshot.paramMap.get('listId');
     this.invoiceService.getAllInvoices(this.loggedInUser, this.invoiceListId).onSnapshot((data)=> {
@@ -48,8 +49,11 @@ export class InvoiceListComponent implements OnInit {
   }
 
   deleteInvoice(uid: string) {
+    this.loading = true;
     if(window.confirm("Do you want to remove this invoice?")) {
-      this.invoiceService.deleteInvoice(this.loggedInUser, this.invoiceListId, uid)
+      this.invoiceService.deleteInvoice(this.loggedInUser, this.invoiceListId, uid).then(() => {
+        this.loading = false;
+      })
     }
   }
 
@@ -63,12 +67,15 @@ export class InvoiceListComponent implements OnInit {
   }
 
   notPayed(element: Invoice) {
+    this.loading = true;
     element.payed = !element.payed;
     let change = {
       "payed": element.payed,
       "uid": element.uid
     }
-    this.invoiceService.updateInvoiceOnInvoiceList(this.loggedInUser, this.invoiceListId, change)
+    this.invoiceService.updateInvoiceOnInvoiceList(this.loggedInUser, this.invoiceListId, change).then(() => {
+      this.loading = false;
+    })
   }
 }
 
