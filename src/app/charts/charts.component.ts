@@ -163,7 +163,7 @@ export class ChartsComponent implements OnInit {
 
     total_asset=cash+receivable+inventory1+other_asset
     total_lia=payable+other_liability+tax
-    working_capital=total_asset-total_lia
+    working_capital=Math.round(total_asset-total_lia)
     equity_ratio=(working_capital/(total_asset))*100
     debt_ratio=total_lia/working_capital
     debt_ratio1=Math.round(debt_ratio*100)
