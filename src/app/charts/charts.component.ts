@@ -111,13 +111,7 @@ export class ChartsComponent implements OnInit {
         }
       }
     }
-    for(let i=0; i<this.data.length;i++){
-      if(this.data[i].type=='Cash'){
-        if(this.data[i].cost>0){
-          cash = cash+this.data[i].cost
-        }
-      }
-    }
+
     for(let i=0; i<this.data.length;i++){
       if(this.data[i].payed== false){
         if(this.data[i].cost>0){
@@ -172,7 +166,6 @@ export class ChartsComponent implements OnInit {
 
     this.Balance.push(
       { name: 'TOTAL ASSETS', euro: total_asset},
-      { name: 'Cash', euro: cash},
       { name: 'Accounts Receivable', euro: receivable},
       { name: 'Inventory', euro: inventory1},
       { name: 'Other Assets', euro: other_asset},
