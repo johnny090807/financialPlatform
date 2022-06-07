@@ -5,20 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/balance/balance.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/balance/balance.component.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/vat-not-payed/vat-not-payed.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/vat-not-payed/vat-not-payed.component.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/vat-not-payed/vat-not-payed.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/vat-not-payed/vat-not-payed.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/vat-not-payed/vat-not-payed.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/invoice/vat-not-payed/vat-not-payed.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/charts/charts.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/charts/charts.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/charts/charts.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/charts/charts.component.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/charts/charts.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/charts/charts.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-add/invoice-add.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-add/invoice-add.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-add/invoice-add.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-add/invoice-add.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/objects/invoice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/objects/invoice.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +160,9 @@
       <workItem from="1651219411707" duration="1764000" />
       <workItem from="1652694516577" duration="6692000" />
       <workItem from="1653135415260" duration="1491000" />
-      <workItem from="1653307632279" duration="2625000" />
+      <workItem from="1653307632279" duration="3299000" />
+      <workItem from="1654182177117" duration="3958000" />
+      <workItem from="1654596122977" duration="1779000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, logout, home and header">
       <created>1649345582057</created>
@@ -240,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652872892657</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="changes">
+      <created>1653914660314</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1653914660315</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -302,9 +317,9 @@
     <MESSAGE value="changes to the invoicelists and invoices" />
     <MESSAGE value="added charts" />
     <MESSAGE value="added data from datasource to charts.component.ts" />
-    <MESSAGE value="changes" />
     <MESSAGE value="removed Logout component" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed Logout component" />
+    <MESSAGE value="changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/firebase.json">

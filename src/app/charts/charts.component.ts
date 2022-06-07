@@ -1,4 +1,4 @@
-import {Component, Input, NgModule, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, NgModule, OnInit, Output} from '@angular/core';
 import {Invoice} from "../objects/invoice";
 import { EChartsOption} from 'echarts';
 import{ NgxEchartsModule} from 'ngx-echarts';
@@ -36,6 +36,7 @@ export class ChartsComponent implements OnInit {
   Balance: any=[];
   cards: any=[];
 
+  @Output("updateComponents") updateComponents: EventEmitter<any> = new EventEmitter();
 
   displayedColumns: string[] = ['name', 'euro'];
 
@@ -80,7 +81,6 @@ export class ChartsComponent implements OnInit {
     let debt_ratio1:any;
     let current_ratio: any;
     let current_ratio1: any;
-
 
     let inventory1=0;
     let cash=0;
@@ -385,6 +385,26 @@ export class ChartsComponent implements OnInit {
       }
     }
 
+
+    let costs:any = []
+
+    this.data.forEach(row => {
+      let found = false;
+      costs.forEach((cost:any) => {
+        if (cost.type == row.type){
+          cost.cost += row.cost
+          found = true
+          return;
+        }
+      })
+      if (found){
+        return;
+      }
+      costs.push({
+        'name': row.type,
+        'value': row.cost
+      })
+    })
     let type_tel=0;
     let type_pen=0;
     let type_stu=0;
@@ -743,23 +763,7 @@ export class ChartsComponent implements OnInit {
           name: 'Type of Cost',
           ratio: '50%',
           type: 'pie',
-          data: [
-            { value: type_tra, name: 'Travel costs' },
-            { value: type_pro, name: ' Promotion/Sponsor costs' },
-            { value: type_tel, name: 'Telephone costs' },
-            { value: type_com, name: 'Computer costs' },
-            { value: type_off, name: 'Office equipment' },
-            { value: type_rep, name: 'Representation costs' },
-            { value: type_bank, name: 'Bank costs' },
-            { value: type_ins, name: 'Insurance' },
-            { value: type_stu, name: 'Study costs' },
-            { value: type_dep, name: 'Deprecation inventory' },
-            { value: type_lit, name: 'Literature' },
-            { value: type_inv, name: 'Small inventory' },
-            { value: type_pen, name: 'Pension' },
-            { value: type_fou, name: 'Foundation costs' },
-            { value: type_oth, name: 'Other general costs' }
-          ],
+          data: costs,
           height: '80%',
           top:'15%',
           emphasis: {

@@ -1,10 +1,13 @@
 <!--<div class="columns">-->
+<div *ngIf="loading" style="position: absolute; background: rgba(0,0,0,0.5); padding-left: 45%; padding-top: 45%; height: 100%; width: 100%">
+  <mat-spinner style="position: absolute; margin: auto"></mat-spinner>
+</div>
 <mat-tab-group>
   <mat-tab label="Overview">
     <button (click)="addNewInvoice()" *ngIf="editing == false" mat-raised-button color="primary">Add invoice</button>
     <button (click)="addNewInvoice()" *ngIf="editing == true" mat-raised-button color="primary">Close invoice edit</button>
     <div class="" *ngIf="editing">
-      <app-invoice-add [editingInvoice]="this.editingInvoice" [loggedInUser]="this.loggedInUser"></app-invoice-add>
+      <app-invoice-add style="position:fixed; width: 100%; height: 100%" (closeForm)="closeForm()" (updateComponents)="updateComponents()" [editingInvoice]="this.editingInvoice" [loggedInUser]="this.loggedInUser"></app-invoice-add>
     </div>
     <p *ngIf="dataSource.length == 0" class="has-text-centered">There are no invoices yet.</p>
     <table *ngIf="dataSource.length != 0" mat-table [dataSource]="dataSource" style="width: 100%">
@@ -38,12 +41,13 @@
       </ng-container>
       <ng-container matColumnDef="VAT">
         <th mat-header-cell *matHeaderCellDef> VAT </th>
-        <td mat-cell *matCellDef="let element"> {{element.VAT}}% </td>
+        <td mat-cell *matCellDef="let element" [matTooltip]="!element.vat_payed? 'Vat has not been payed yet': ''" [ngClass]="element.vat_payed? 'bg-none greyscale-hover': 'bg-red bg-red-hover'"> {{element.VAT}}% </td>
       </ng-container>
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let element">
           <a (click)="notPayed(element)" matTooltip="Click if the invoice is not payed yet"><mat-icon>not_interested</mat-icon></a>
+          <a (click)="vatChange(element)" matTooltip="Click if the vat has not been payed yet"><mat-icon>attach_money</mat-icon></a>
           <a (click)="editInvoice(element)" matTooltip="Click to edit this invoice"><mat-icon>edit</mat-icon></a>
           <a (click)="deleteInvoice(element.uid)" matTooltip="Click this to delete the invoice"><mat-icon>delete</mat-icon></a>
         </td>
@@ -56,10 +60,13 @@
     <balanceSheet [data]="dataSource" [invoiceList]="invoiceList"></balanceSheet>
   </mat-tab>
   <mat-tab label="Charts" *ngIf="!loading">
-    <app-charts [data]="dataSource"></app-charts>
+    <app-charts (updateComponents)="updateComponents()" [data]="dataSource"></app-charts>
   </mat-tab>
   <mat-tab label="Memorial" *ngIf="!loading">
-    <app-invoice-not-payed [invoiceListId]="this.invoiceListId" [dataSource]="dataSource"></app-invoice-not-payed>
+    <app-invoice-not-payed (updateComponents)="updateComponents()" [invoiceListId]="this.invoiceListId" [dataSource]="not_payed_invoice"></app-invoice-not-payed>
+  </mat-tab>
+  <mat-tab label="Memorial | VAT" *ngIf="!loading">
+    <app-vat-not-payed (updateComponents)="updateComponents()" [invoiceListId]="this.invoiceListId" [dataSource]="not_payed_vat_invoice"></app-vat-not-payed>
   </mat-tab>
 </mat-tab-group>
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {InvoiceService} from "../invoice.service";
 import {Invoice} from "../../objects/invoice";
@@ -16,6 +16,10 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
   @Input() loggedInUser: any
   invoiceUid: any
   @Input() editingInvoice: any
+
+  @Output("updateComponents") updateComponents: EventEmitter<any> = new EventEmitter();
+  @Output("closeForm") closeForm: EventEmitter<any> = new EventEmitter();
+
   invoiceForm = new FormGroup({
     date: new FormControl("", Validators.required),
     period: new FormControl("", Validators.required),
@@ -69,6 +73,7 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
         this.loggedInUser,
         this.invoiceUid,
         invoice).then(() => {
+        this.updateComponents.emit()
         this._snackbar.open("Invoice updated succesfully", "OK")
       })
       return;
@@ -90,6 +95,7 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
       this.loggedInUser,
       this.invoiceUid,
       invoice).then(() => {
+        this.updateComponents.emit()
       this._snackbar.open("Invoice added succesfully", "OK")
     })
   }
@@ -104,5 +110,9 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
     this.invoiceForm.reset()
     this.editingInvoice = undefined
 
+  }
+
+  close() {
+    this.closeForm.emit()
   }
 }
