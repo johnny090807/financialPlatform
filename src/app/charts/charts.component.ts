@@ -173,7 +173,7 @@ export class ChartsComponent implements OnInit {
       { name: 'Other Assets', euro: other_asset},
       { name: 'TOTAL LIABILITIES', euro: total_lia},
       { name: 'Accounts Payable', euro: payable},
-      { name: 'Tax to pay', euro: tax},
+      { name: 'Tax to pay', euro: Math.round(tax)},
       { name: 'Other Liabilities', euro: other_liability},
     );
     console.log(this.Balance)
