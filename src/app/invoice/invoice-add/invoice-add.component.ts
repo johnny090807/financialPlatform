@@ -30,7 +30,25 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
     cost: new FormControl("", Validators.required),
     VAT: new FormControl("", Validators.required),
   })
-  options: string[] = ['Travel costs', 'Pension', 'Study costs', 'Office equipment', 'Small inventory', 'Literature', 'Telephone costs', 'Computer costs', 'Foundation costs', 'Promotion/Sponsor costs', 'Representation costs', 'Bank costs', 'Insurance', 'Other general costs', 'Deprecation inventory','Other Assets','Other Liabilities'];
+  options: string[] = [
+    'Travel costs',
+    'Pension',
+    'Study costs',
+    'Office equipment',
+    'Small inventory',
+    'Literature',
+    'Telephone costs',
+    'Computer costs',
+    'Foundation costs',
+    'Promotion/Sponsor costs',
+    'Representation costs',
+    'Bank costs',
+    'Insurance',
+    'Other general costs',
+    'Deprecation inventory',
+    'Other Assets',
+    'Other Liabilities'
+  ];
   filteredOptions!: Observable<string[]>;
 
   constructor(private invoiceService: InvoiceService,
