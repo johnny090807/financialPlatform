@@ -15,6 +15,14 @@ the cost was: {{selectedValue}}
   </tr>
   </thead>
   <tbody>
+
+  <tr>
+    <th><ins>TYPE COSTS</ins></th>
+  </tr>
+  <tr *ngFor="let cost of costs">
+    <td>{{cost.type}}</td>
+    <td>{{cost.cost}}</td>
+  </tr>
   <tr>
     <th><ins>ASSET</ins></th>
   </tr>
