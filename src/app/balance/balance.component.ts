@@ -17,8 +17,6 @@ export class BalanceComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.data, this.invoiceList)
-
     this.data.forEach(row => {
       let found = false;
       this.costs.forEach((cost:any) => {
@@ -36,7 +34,6 @@ export class BalanceComponent implements OnInit {
         'cost': row.cost
       })
     })
-    console.log(this.costs)
   }
 
 }

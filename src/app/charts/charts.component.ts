@@ -384,11 +384,13 @@ export class ChartsComponent implements OnInit {
 
     let costs:any = []
 
-    this.data.forEach(row => {
+    this.data.forEach((row: any) => {
       let found = false;
       costs.forEach((cost:any) => {
-        if (cost.type == row.type){
-          cost.cost += row.cost
+        if (cost.name == row.type){
+          if (row.cost < 0){
+            cost.value += row.cost * -1
+          }
           found = true
           return;
         }
@@ -396,10 +398,12 @@ export class ChartsComponent implements OnInit {
       if (found){
         return;
       }
-      costs.push({
-        'name': row.type,
-        'value': row.cost
-      })
+      if(row.cost < 0){
+        costs.push({
+          'name': row.type,
+          'value': row.cost * -1
+        })
+      }
     })
     let type_tel=0;
     let type_pen=0;
