@@ -60,7 +60,7 @@
     <balanceSheet [data]="dataSource" [invoiceList]="invoiceList"></balanceSheet>
   </mat-tab>
   <mat-tab label="Charts" *ngIf="!loading">
-    <app-charts (updateComponents)="updateComponents()" [data]="dataSource"></app-charts>
+    <app-charts (updateComponents)="updateComponents()" [data]="dataSource" [invoiceList]="invoiceList"></app-charts>
   </mat-tab>
   <mat-tab label="Memorial" *ngIf="!loading">
     <app-invoice-not-payed (updateComponents)="updateComponents()" [invoiceListId]="this.invoiceListId" [dataSource]="not_payed_invoice"></app-invoice-not-payed>

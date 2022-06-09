@@ -29,6 +29,7 @@ export class AppModule {}
 export class ChartsComponent implements OnInit {
 
   @Input() data: any[] = []
+  @Input() invoiceList: any;
   options: any;
   option1: any;
   option2: any;
