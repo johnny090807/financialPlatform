@@ -4,7 +4,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {InvoiceService} from "../invoice.service";
 import {Invoice} from "../../objects/invoice";
 import {ActivatedRoute, Router} from "@angular/router";
-import {toInteger} from "@ng-bootstrap/ng-bootstrap/util/util";
 
 @Component({
   selector: 'app-invoice-list',

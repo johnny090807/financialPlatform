@@ -66,7 +66,6 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
         "cost": i.cost,
         "date": i.date,
         "period": i.period,
-        "payed": true,
         "uid": this.editingInvoice.uid
       }
       this.invoiceService.updateInvoiceOnInvoiceList(

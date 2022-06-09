@@ -136,22 +136,24 @@ export class ChartsComponent implements OnInit {
     }
 
     for(let i=0; i<this.data.length;i++){
-      if(this.data[i].type== 'Other Liabilities'){
+      if(!this.data[i].vat_payed){
         if(this.data[i].cost<0){
           other_liability = other_liability+-1*this.data[i].cost
         }
       }
     }
     for(let i=0; i<this.data.length;i++){
-      if(this.data[i].payed==false){
+      if(!this.data[i].vat_payed){
         if(this.data[i].cost>0){
-          tax= tax + this.data[i].VAT*0.01 * this.data[i].cost}
+          tax= tax + this.data[i].VAT*0.01 * this.data[i].cost
+        }
       }
     }
     for(let i=0; i<this.data.length;i++){
-      if(this.data[i].payed==false){
+      if(!this.data[i].vat_payed){
         if(this.data[i].cost<0){
-          tax= tax + this.data[i].VAT*0.01 * -1*this.data[i].cost}
+          tax= tax + this.data[i].VAT*0.01 * -1*this.data[i].cost
+        }
       }
     }
 
