@@ -48,7 +48,6 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
     'Deprecation inventory',
     'Inventory(Fixed Asset)',
     'Debtors',
-    'Work in progress',
     'Other receivables and assets',
     'Own Capital',
     'Last year',

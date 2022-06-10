@@ -37,7 +37,7 @@ export class BalanceComponent implements OnInit {
     })
     let not_list:any=[];
     not_list=['Inventory(Fixed Asset)','Debtors','Other receivables and assets',
-      'Own Capital','Last year','Credits(Debts to suppliers and trade credits)','Other Liabilities']
+      'Own Capital','Last year','Other Liabilities']
 
     let Inventory=0 ;
     let Debtors=0;
@@ -118,7 +118,16 @@ export class BalanceComponent implements OnInit {
         }
       }
     }
-    Current_year=Liquid_asset-tax-not_payed-other_liability
+    let not=0;
+    for(let i=0; i<this.data.length; i++) {
+      for (let j = 0; j < not_list.length; j++) {
+            if (this.data[i].type == not_list[j]) {
+              not = not + this.data[i].cost
+            }
+          }
+        }
+    console.log(not)
+    Current_year=Liquid_asset-tax-not_payed-other_liability-not
     LIABILITY=tax+other_liability+not_payed
     Capacity=Own_capital+Last_year+Current_year
     Check= Liquid_asset+Debtors+Other_asset-Capacity-LIABILITY
