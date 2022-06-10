@@ -34,12 +34,12 @@ the cost was: {{selectedValue}}
   </tr>
   <tr>
     <td>Inventory</td>
-    <td>0</td>
+    <td>{{this.Balances[0].Inventory}}</td>
   </tr>
   <tr>
     <td></td>
     <td></td>
-    <td>0</td>
+    <td>{{this.Balances[0].Fixed_asset}}</td>
   </tr>
   <tr>
     <th><ins>CURRENT ASSETS</ins></th>
@@ -48,8 +48,8 @@ the cost was: {{selectedValue}}
     <td><ins>Receivables</ins></td>
   </tr>
   <tr>
-    <td>Trade debators</td>
-    <td>0</td>
+    <td>Trade debtors</td>
+    <td>{{this.Balances[0].Debtors}}</td>
   </tr>
   <tr>
     <td>Still to facurate</td>
@@ -61,22 +61,22 @@ the cost was: {{selectedValue}}
   </tr>
   <tr>
     <td>Other receivables and assets</td>
-    <td>0</td>
+    <td>{{this.Balances[0].Other_asset}}</td>
   </tr>
   <tr>
     <td></td>
     <td></td>
-    <td>0</td>
+    <td>{{this.Balances[0].Receivables}}</td>
   </tr>
   <tr>
     <td><ins>Liquid assets</ins></td>
     <td></td>
-    <td>9674</td>
+    <td>{{this.Balances[0].liquid_asset}}</td>
   </tr>
   <tr>
     <td><ins>Total Asset side</ins></td>
     <td></td>
-    <td>9674</td>
+    <td>{{this.Balances[0].total_asset}}</td>
   </tr>
   <tr>
     <td></td>
@@ -90,46 +90,46 @@ the cost was: {{selectedValue}}
   </tr>
   <tr>
     <td>Own capital</td>
-    <td>0</td>
+    <td>{{this.Balances[0].Own_capital}}</td>
   </tr>
   <tr>
     <td>Result last year</td>
-    <td>0</td>
+    <td>{{this.Balances[0].Last_year}}</td>
   </tr>
   <tr>
     <td>Result current year</td>
-    <td>7994</td>
+    <td>{{this.Balances[0].Current_year}}</td>
   </tr>
   <tr>
     <td></td>
     <td></td>
-    <td>7994</td>
+    <td>{{this.Balances[0].Capacity}}</td>
   </tr>
   <tr>
     <th><ins>CURRENT LIABILITIES</ins></th>
   </tr>
   <tr>
-    <td>Debts to suppliers and trade credits</td>
-    <td>0</td>
+    <td>Debts</td>
+    <td>{{this.Balances[0].Credit}}</td>
   </tr>
   <tr>
     <td>Sales tax</td>
-    <td>1680</td>
+    <td>{{this.Balances[0].tax}}</td>
   </tr>
   <tr>
     <td>Other payable and accruals</td>
-    <td>0</td>
+    <td>{{this.Balances[0].other_liability}}</td>
   </tr>
   <tr>
     <td></td>
     <td></td>
-    <td>1680</td>
+    <td>{{this.Balances[0].LIABILITY}}</td>
   </tr>
   <tr></tr>
   <tr>
     <td><ins>Total liability side</ins></td>
     <td></td>
-    <td>9674</td>
+    <td>{{this.Balances[0].total_liability}}</td>
   </tr>
   <tr>
     <td></td>
@@ -137,7 +137,7 @@ the cost was: {{selectedValue}}
   </tr>
   <tr class="is-selected">
     <td>Check</td>
-    <td>0</td>
+    <td>{{this.Balances[0].Check}}</td>
   </tr>
 
   </tbody>

@@ -46,7 +46,12 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
     'Insurance',
     'Other general costs',
     'Deprecation inventory',
-    'Other Assets',
+    'Inventory(Fixed Asset)',
+    'Debtors',
+    'Work in progress',
+    'Other receivables and assets',
+    'Own Capital',
+    'Last year',
     'Other Liabilities'
   ];
   filteredOptions!: Observable<string[]>;
