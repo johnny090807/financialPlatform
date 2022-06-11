@@ -111,83 +111,101 @@ export class ChartsComponent implements OnInit {
     let current_ratio: any;
     let current_ratio1: any;
 
-    let inventory1 = 0;
-    let cash = 0;
-    let receivable = 0;
-    let other_asset = 0;
-    let payable = 0;
-    let other_liability = 0;
-    let tax = 0;
+    let Inventory=0 ;
+    let Debtors=0;
+    let Other_asset=0;
+    let Liquid_asset=0;
+    let Own_capital=0;
+    let Last_year=0;
+    let Current_year=0;
+    let credit=0;
+    let tax=0;
+    let other_liability=0;
+    let not_payed=0;
+    let LIABILITY: any;
+    let Capacity:any;
+    let Check:any;
 
-    for (let i = 0; i < this.data.length; i++) {
-      if (this.data[i].type == 'Office equipment') {
-        if (this.data[i].cost < 0) {
-          inventory1 = inventory1 + -1 * this.data[i].cost
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].type=='Inventory(Fixed Asset)'){
+        if(this.data[i].cost>0){
+          Inventory = Inventory + this.data[i].cost
         }
       }
     }
-    for (let i = 0; i < this.data.length; i++) {
-      if (this.data[i].type == 'Small inventory') {
-        if (this.data[i].cost < 0) {
-          inventory1 = inventory1 + -1 * this.data[i].cost
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].type=='Debtors'){
+        if(this.data[i].cost<0){
+          Debtors = Debtors+-1*this.data[i].cost
         }
       }
     }
-    for (let i = 0; i < this.data.length; i++) {
-      if (this.data[i].type == 'Deprecation inventory') {
-        if (this.data[i].cost > 0) {
-          inventory1 = inventory1 - this.data[i].cost
+    for(let i=0; i<this.data.length;i++){
+      if(this.data[i].type=='Other receivables and assets'){
+        if(this.data[i].cost>0){
+          Other_asset = Other_asset+-1*this.data[i].cost
         }
       }
     }
-
-    for (let i = 0; i < this.data.length; i++) {
-      if (this.data[i].payed == false) {
-        if (this.data[i].cost > 0) {
-          receivable = receivable + this.data[i].cost
-        }
+    for(let i=0; i<this.data.length;i++) {
+      Liquid_asset = Liquid_asset + this.data[i].cost
+    }
+    for(let i=0; i<this.data.length;i++) {
+      if (this.data[i].type == 'Own Capital') {
+        Own_capital = Own_capital + this.data[i].cost
       }
     }
-    for (let i = 0; i < this.data.length; i++) {
-      if (this.data[i].type == 'Other Assets') {
-        if (this.data[i].cost > 0) {
-          other_asset = other_asset + this.data[i].cost
-        }
-      }
-    }
-
-    for (let i = 0; i < this.data.length; i++) {
-      if (this.data[i].payed == false) {
-        if (this.data[i].cost < 0) {
-          payable = payable + -1 * this.data[i].cost
-        }
+    for(let i=0; i<this.data.length;i++) {
+      if (this.data[i].type == 'Last Year') {
+        Last_year = Last_year + this.data[i].cost
       }
     }
 
-    for (let i = 0; i < this.data.length; i++) {
-      if (!this.data[i].vat_payed) {
-        if (this.data[i].cost < 0) {
-          other_liability = other_liability + -1 * this.data[i].cost
-        }
-      }
-    }
-    for (let i = 0; i < this.data.length; i++) {
-      if (!this.data[i].vat_payed) {
-        if (this.data[i].cost > 0) {
-          tax = tax + this.data[i].VAT * 0.01 * this.data[i].cost
-        }
-      }
-    }
-    for (let i = 0; i < this.data.length; i++) {
-      if (!this.data[i].vat_payed) {
-        if (this.data[i].cost < 0) {
-          tax = tax + this.data[i].VAT * 0.01 * -1 * this.data[i].cost
-        }
-      }
-    }
 
-    total_asset = cash + receivable + inventory1 + other_asset
-    total_lia = payable + other_liability + tax
+    for(let i=0; i<this.data.length;i++) {
+      if(this.data[i].cost>0){
+        if(this.data[i].vat_payed==false){
+          tax=tax+this.data[i].cost*0.01*this.data[i].VAT
+        }
+      }
+    }
+    for(let i=0; i<this.data.length;i++) {
+      if(this.data[i].cost<0){
+        if(this.data[i].vat_payed==false){
+          tax=tax+this.data[i].cost*0.01*this.data[i].VAT*-1
+        }
+      }
+    }
+    for(let i=0; i<this.data.length; i++){
+      if(this.data[i].cost<0){
+        if(this.data[i].payed==false){
+          not_payed=not_payed+-1*this.data[i].cost
+        }
+      }
+    }
+    for(let i=0;i<this.data.length;i++) {
+      if(this.data[i].cost<0){
+        if(this.data[i].type=='Other Liability'){
+          other_liability=other_liability+-1*this.data[i].cost
+        }
+      }
+    }
+    let not0=0;
+    for(let i=0; i<this.data.length; i++) {
+      for (let j = 0; j < not_list.length; j++) {
+        if (this.data[i].type == not_list[j]) {
+          not0 = not0 + this.data[i].cost
+        }
+      }
+    }
+    console.log(not)
+    Current_year=Liquid_asset-tax-not_payed-other_liability-not
+    LIABILITY=tax+other_liability+not_payed
+    Capacity=Own_capital+Last_year+Current_year
+
+
+    total_asset = Math.round(Liquid_asset)+Math.round(Debtors)+Math.round(Other_asset)
+    total_lia = Math.round(LIABILITY)
     working_capital = Math.round(total_asset - total_lia)
     equity_ratio = (working_capital / (total_asset)) * 100
     debt_ratio = total_lia / working_capital
@@ -196,14 +214,14 @@ export class ChartsComponent implements OnInit {
     current_ratio1 = Math.round(current_ratio * 100)
 
     this.Balance.push(
-      {name: 'TOTAL ASSETS', euro: total_asset},
-      {name: 'Accounts Receivable', euro: receivable},
-      {name: 'Inventory', euro: inventory1},
-      {name: 'Other Assets', euro: other_asset},
-      {name: 'TOTAL LIABILITIES', euro: total_lia},
-      {name: 'Accounts Payable', euro: payable},
+      {name: 'TOTAL ASSETS', euro: Math.round(Liquid_asset)+Math.round(Debtors)+Math.round(Other_asset)},
+      {name: 'Accounts Receivable', euro: Math.round(Debtors)+Math.round(Other_asset)},
+      {name: 'Inventory', euro: Math.round(Inventory)},
+      {name: 'Liquid Assets', euro: Math.round(Liquid_asset)},
+      {name: 'TOTAL LIABILITIES', euro: Math.round(LIABILITY)},
+      {name: 'Debts', euro: Math.round(not_payed)},
       {name: 'Tax to pay', euro: Math.round(tax)},
-      {name: 'Other Liabilities', euro: other_liability},
+      {name: 'Other Liabilities', euro: Math.round(other_liability)},
     );
     console.log(this.Balance)
     this.cards.push({
