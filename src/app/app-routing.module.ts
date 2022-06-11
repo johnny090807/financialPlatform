@@ -9,6 +9,7 @@ import {AuthService} from "./auth/auth.service";
 import {InvoiceListComponent} from "./invoice/invoice-list/invoice-list.component";
 import {ChartsComponent} from "./charts/charts.component";
 
+
 const routes: Routes = [
   {component: LoginComponent, path: "Login"},
   {component: RegisterComponent, path: "Register"},

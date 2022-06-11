@@ -1,10 +1,11 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {InvoiceService} from "../invoice.service";
 import {Invoice} from "../../objects/invoice";
 import {ActivatedRoute} from "@angular/router";
 import {map, startWith} from "rxjs/operators";
 import {Observable} from "rxjs";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-invoice-add',
@@ -15,6 +16,10 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
   @Input() loggedInUser: any
   invoiceUid: any
   @Input() editingInvoice: any
+
+  @Output("updateComponents") updateComponents: EventEmitter<any> = new EventEmitter();
+  @Output("closeForm") closeForm: EventEmitter<any> = new EventEmitter();
+
   invoiceForm = new FormGroup({
     date: new FormControl("", Validators.required),
     period: new FormControl("", Validators.required),
@@ -25,13 +30,37 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
     cost: new FormControl("", Validators.required),
     VAT: new FormControl("", Validators.required),
   })
-  options: string[] = ['Travel costs', 'Pension', 'Study costs', 'Office equipment', 'Small inventory', 'Literature', 'Telephone costs', 'Computer costs', 'Foundation costs', 'Promotion/Sponsor costs', 'Representation costs', 'Bank costs', 'Insurance', 'Other general costs', 'Deprecation inventory'];
+  options: string[] = [
+    'Travel costs',
+    'Pension',
+    'Study costs',
+    'Office equipment',
+    'Small inventory',
+    'Literature',
+    'Telephone costs',
+    'Computer costs',
+    'Foundation costs',
+    'Promotion/Sponsor costs',
+    'Representation costs',
+    'Bank costs',
+    'Insurance',
+    'Other general costs',
+    'Deprecation inventory',
+    'Inventory(Fixed Asset)',
+    'Debtors',
+    'Other receivables and assets',
+    'Own Capital',
+    'Last year',
+    'Other Liabilities'
+  ];
   filteredOptions!: Observable<string[]>;
 
   constructor(private invoiceService: InvoiceService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private _snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
+
     this.filteredOptions = this.invoiceForm.controls.type.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value)),
@@ -59,13 +88,15 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
         "cost": i.cost,
         "date": i.date,
         "period": i.period,
-        "payed": true,
         "uid": this.editingInvoice.uid
       }
       this.invoiceService.updateInvoiceOnInvoiceList(
         this.loggedInUser,
         this.invoiceUid,
-        invoice)
+        invoice).then(() => {
+        this.updateComponents.emit()
+        this._snackbar.open("Invoice updated succesfully", "OK")
+      })
       return;
     }
 
@@ -84,7 +115,10 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
     this.invoiceService.addInvoiceToInvoiceList(
       this.loggedInUser,
       this.invoiceUid,
-      invoice)
+      invoice).then(() => {
+        this.updateComponents.emit()
+      this._snackbar.open("Invoice added succesfully", "OK")
+    })
   }
 
   private _filter(value: string): string[] {
@@ -97,5 +131,9 @@ export class InvoiceAddComponent implements OnInit, OnDestroy {
     this.invoiceForm.reset()
     this.editingInvoice = undefined
 
+  }
+
+  close() {
+    this.closeForm.emit()
   }
 }

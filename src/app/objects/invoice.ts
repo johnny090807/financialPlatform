@@ -8,6 +8,6 @@ export interface Invoice {
   cost: number,
   type: string,
   VAT: number,
-  payed?: boolean
-
+  payed?: boolean,
+  vat_payed?:boolean
 }

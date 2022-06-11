@@ -1,0 +1,136 @@
+<mat-form-field>
+  <mat-select [(ngModel)]="selectedValue">
+    <mat-option *ngFor="let cost of this.costs" [value]="cost.cost">
+      {{cost.type}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+the cost was: {{selectedValue}}
+<table class="table is-fullwidth">
+  <thead>
+  <tr>
+    <td>Name</td>
+    <td>Value</td>
+    <td>Sum</td>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr>
+    <th><ins>TYPE COSTS</ins></th>
+  </tr>
+  <tr *ngFor="let cost of costs">
+    <td>{{cost.type}}</td>
+    <td>{{cost.cost}}</td>
+  </tr>
+  <tr>
+    <th><ins>ASSET</ins></th>
+  </tr>
+  <tr>
+    <th><ins>FIXED ASSETS</ins></th>
+  </tr>
+  <tr>
+    <td><ins>Tangible Fixed Asset</ins></td>
+  </tr>
+  <tr>
+    <td>Inventory</td>
+    <td>{{this.Balances[0].Inventory}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>{{this.Balances[0].Fixed_asset}}</td>
+  </tr>
+  <tr>
+    <th><ins>CURRENT ASSETS</ins></th>
+  </tr>
+  <tr>
+    <td><ins>Receivables</ins></td>
+  </tr>
+  <tr>
+    <td>Trade debtors</td>
+    <td>{{this.Balances[0].Debtors}}</td>
+  </tr>
+  <tr>
+    <td>Other receivables and assets</td>
+    <td>{{this.Balances[0].Other_asset}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>{{this.Balances[0].Receivables}}</td>
+  </tr>
+  <tr>
+    <td><ins>Liquid assets</ins></td>
+    <td></td>
+    <td>{{this.Balances[0].liquid_asset}}</td>
+  </tr>
+  <tr>
+    <td><ins>Total Asset side</ins></td>
+    <td></td>
+    <td>{{this.Balances[0].total_asset}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th><ins>LIABILITIES</ins></th>
+  </tr>
+  <tr>
+    <th><ins>BUSINESS CAPACITY</ins></th>
+  </tr>
+  <tr>
+    <td>Own capital</td>
+    <td>{{this.Balances[0].Own_capital}}</td>
+  </tr>
+  <tr>
+    <td>Result last year</td>
+    <td>{{this.Balances[0].Last_year}}</td>
+  </tr>
+  <tr>
+    <td>Result current year</td>
+    <td>{{this.Balances[0].Current_year}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>{{this.Balances[0].Capacity}}</td>
+  </tr>
+  <tr>
+    <th><ins>CURRENT LIABILITIES</ins></th>
+  </tr>
+  <tr>
+    <td>Debts</td>
+    <td>{{this.Balances[0].Credit}}</td>
+  </tr>
+  <tr>
+    <td>Sales tax</td>
+    <td>{{this.Balances[0].tax}}</td>
+  </tr>
+  <tr>
+    <td>Other payable</td>
+    <td>{{this.Balances[0].other_liability}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>{{this.Balances[0].LIABILITY}}</td>
+  </tr>
+  <tr></tr>
+  <tr>
+    <td><ins>Total liability side</ins></td>
+    <td></td>
+    <td>{{this.Balances[0].total_liability}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr class="is-selected">
+    <td>Check</td>
+    <td>{{this.Balances[0].Check}}</td>
+  </tr>
+
+  </tbody>
+</table>

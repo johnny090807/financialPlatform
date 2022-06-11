@@ -37,7 +37,9 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import { ChartsComponent } from './charts/charts.component';
 import {NgxEchartsModule} from "ngx-echarts";
 import {MatTabsModule} from "@angular/material/tabs";
+import { BalanceComponent } from './balance/balance.component';
 import { InvoiceNotPayedComponent } from './invoice/invoice-not-payed/invoice-not-payed.component';
+import { VatNotPayedComponent } from './invoice/vat-not-payed/vat-not-payed.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { InvoiceNotPayedComponent } from './invoice/invoice-not-payed/invoice-no
     InvoiceAddComponent,
     InvoiceListComponent,
     ChartsComponent,
-    InvoiceNotPayedComponent
+    BalanceComponent,
+    InvoiceNotPayedComponent,
+    VatNotPayedComponent
   ],
   imports: [
     BrowserModule,
