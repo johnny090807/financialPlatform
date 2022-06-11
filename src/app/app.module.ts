@@ -39,7 +39,7 @@ import {NgxEchartsModule} from "ngx-echarts";
 import {MatTabsModule} from "@angular/material/tabs";
 import { BalanceComponent } from './balance/balance.component';
 import { InvoiceNotPayedComponent } from './invoice/invoice-not-payed/invoice-not-payed.component';
-import { VatNotPayedComponent } from './invoice/vat-not-payed/vat-not-payed.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
   declarations: [
@@ -56,9 +56,9 @@ import { VatNotPayedComponent } from './invoice/vat-not-payed/vat-not-payed.comp
     ChartsComponent,
     BalanceComponent,
     InvoiceNotPayedComponent,
-    VatNotPayedComponent
   ],
   imports: [
+    MatDatepickerModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -86,7 +86,8 @@ import { VatNotPayedComponent } from './invoice/vat-not-payed/vat-not-payed.comp
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     }),
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

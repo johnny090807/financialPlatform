@@ -64,6 +64,7 @@ export class AuthService {
         this._snackBar.open(error.message)
       })
   }
+
   SignUp(email: string, password: string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
