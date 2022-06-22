@@ -11,6 +11,9 @@ import {ChartsComponent} from "./charts/charts.component";
 
 
 const routes: Routes = [
+
+  {path: '', redirectTo: '', pathMatch: 'prefix'},
+  {component: HomeComponent, path: "Home"},
   {component: LoginComponent, path: "Login"},
   {component: RegisterComponent, path: "Register"},
   {component: AccountancyComponent, path: "Invoice", canActivate: [AuthService]},

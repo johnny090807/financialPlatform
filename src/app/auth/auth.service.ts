@@ -30,11 +30,13 @@ export class AuthService {
   }
 
   canActivate(): boolean {
-    if (!this.userData){
+    let user = JSON.parse(localStorage.getItem('user')!);
+
+    if (!user){
       this.router.navigate(['Home']);
       return false;
     }
-    if (!this.userData.emailVerified) {
+    if (!user.emailVerified) {
       this.verifyEmail()
       this.router.navigate(['Home']);
       return false;

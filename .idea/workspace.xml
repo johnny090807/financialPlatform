@@ -6,19 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5a1d5696-150a-4d10-8138-c33c922fa44d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/balance/balance.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/balance/balance.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/balance/balance.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/balance/balance.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-not-payed/invoice-not-payed.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/vat-not-payed/vat-not-payed.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/vat-not-payed/vat-not-payed.component.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/vat-not-payed/vat-not-payed.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/vat-not-payed/vat-not-payed.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/vat-not-payed/vat-not-payed.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/invoice/vat-not-payed/vat-not-payed.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/invoice/invoice-list/invoice-list.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +164,8 @@
       <workItem from="1654596122977" duration="9408000" />
       <workItem from="1654796227662" duration="3329000" />
       <workItem from="1654861553048" duration="5941000" />
+      <workItem from="1655028261131" duration="679000" />
+      <workItem from="1655579047156" duration="4813000" />
     </task>
     <task id="LOCAL-00001" summary="Added login, register, logout, home and header">
       <created>1649345582057</created>
