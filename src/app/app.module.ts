@@ -40,6 +40,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import { BalanceComponent } from './balance/balance.component';
 import { InvoiceNotPayedComponent } from './invoice/invoice-not-payed/invoice-not-payed.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     ChartsComponent,
     BalanceComponent,
     InvoiceNotPayedComponent,
+    FaqComponent,
   ],
   imports: [
     MatDatepickerModule,
