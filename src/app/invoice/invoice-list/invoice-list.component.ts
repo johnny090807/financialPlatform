@@ -80,9 +80,10 @@ export class InvoiceListComponent implements OnInit {
 
   editInvoice(invoice: Invoice) {
     this.editingInvoice = invoice
+    this.loading = true
     setTimeout(() => {
       this.editing = true
-
+      this.loading = false
     }, 500)
   }
 
