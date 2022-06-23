@@ -19,7 +19,9 @@ export class InvoiceService {
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
-    private _snackBar: MatSnackBar) {
+    public ngZone: NgZone,
+    private _snackBar: MatSnackBar,
+    private authService: AuthService) {
   }
 
   addInvoiceListToUser(user: User, list: InvoiceLists){

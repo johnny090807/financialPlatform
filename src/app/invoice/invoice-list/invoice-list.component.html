@@ -63,10 +63,10 @@
     <app-charts (updateComponents)="updateComponents()" [data]="dataSource" [invoiceList]="invoiceList"></app-charts>
   </mat-tab>
   <mat-tab label="Memorial" *ngIf="!loading">
-    <app-invoice-not-payed (updateComponents)="updateComponents()" [invoiceListId]="this.invoiceListId" [dataSource]="not_payed_invoice" [type]="0"></app-invoice-not-payed>
+    <app-invoice-not-payed (updateComponents)="updateComponents()" [invoiceListId]="this.invoiceListId" [dataSource]="not_payed_invoice"></app-invoice-not-payed>
   </mat-tab>
   <mat-tab label="Memorial | VAT" *ngIf="!loading">
-    <app-invoice-not-payed (updateComponents)="updateComponents()" [invoiceListId]="this.invoiceListId" [dataSource]="not_payed_vat_invoice" [type]="1"></app-invoice-not-payed>
+    <app-vat-not-payed (updateComponents)="updateComponents()" [invoiceListId]="this.invoiceListId" [dataSource]="not_payed_vat_invoice"></app-vat-not-payed>
   </mat-tab>
 </mat-tab-group>
 
