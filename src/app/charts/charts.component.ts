@@ -742,6 +742,14 @@ export class ChartsComponent implements OnInit {
           })
         }
       })
+    not_list.forEach((item:any) => {
+      costs.forEach((data: any, index: number) => {
+        if(data.type == item){
+          costs.splice(index,1)
+          return;
+        }
+      })
+    })
 
       this.options = {
         title: {

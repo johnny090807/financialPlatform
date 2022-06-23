@@ -35,9 +35,17 @@ export class BalanceComponent implements OnInit {
         'cost': row.cost
       })
     })
-    let not_list:any=[];
-    not_list=['Inventory(Fixed Asset)','Debtors','Other receivables and assets',
+    let not_list:any;
+    not_list=['Inventory(Fixed Asset)', 'Debtors', 'Other receivables and assets',
       'Own Capital','Last year','Other Liabilities']
+    not_list.forEach((item:any) => {
+      this.costs.forEach((data: any, index: number) => {
+          if(data.type == item){
+            this.costs.splice(index,1)
+            return;
+          }
+      })
+    })
 
     let Inventory=0 ;
     let Debtors=0;
