@@ -27,7 +27,7 @@ export class InvoiceNotPayedComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedInUser = JSON.parse(localStorage.getItem('user')!)
-    // this.filterList()
+    console.log(this.type)
   }
 
   filterList(){
