@@ -719,7 +719,9 @@ export class ChartsComponent implements OnInit {
 
 
       let costs: any = []
-      let exclude=0;
+      let a: any;
+      let b: any;
+
 
       this.data.forEach((row: any) => {
         let found = false;
@@ -751,6 +753,19 @@ export class ChartsComponent implements OnInit {
       })
     })
 
+    for (let i=0; i<costs.length; i++){
+      for(let j=i+1; j<costs.length;j++){
+        if(costs[i].value<costs[j].value){
+          a=costs[i].name;
+          b=costs[i].value;
+          costs[i].name=costs[j].name;
+          costs[i].value=costs[j].value;
+          costs[j].name=a;
+          costs[j].value=b;
+        }
+      }
+    }
+    console.log(costs)
       this.options = {
         title: {
           text: "Income and Expenses"
@@ -953,9 +968,16 @@ export class ChartsComponent implements OnInit {
         title: {
           text: "Expenditure Type Ratio"
         },
-        color: ["#6D597A", "#B56576", "#355070", "#E56B6F", "#EAAC8B",
-          "#D8E0BB", "#B6CEC7", "#86A3C3", "#7268A6", "#6B3074",
-          "#DC8665", "#138086", "#534666", "#CD7672", "#EEB462"],
+        toolbox: {
+          feature: {
+            dataView: { show: true, readOnly: false },
+            saveAsImage: { show: true }
+          }
+        },
+        color: ["#6D597A","#B56576", "#E56B6F", "#EAAC8B",
+          "#D8E0BB", "#B6CEC7", "#8FB9AA","#86A3C3", "#7268A6", "#6B3074",
+          "#DC8665", "#138086", "#534666", "#CD7672", "#EEB462",
+          "#355070"],
         tooltip: {
           trigger: 'item'
         },
