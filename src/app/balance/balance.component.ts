@@ -108,7 +108,7 @@ export class BalanceComponent implements OnInit {
     for(let i=0; i<this.data.length;i++) {
       if(this.data[i].cost<0){
         if(this.data[i].vat_payed==false){
-          tax=tax+this.data[i].cost*0.01*this.data[i].VAT*-1
+          tax=tax+this.data[i].cost*0.01*this.data[i].VAT
         }
       }
     }

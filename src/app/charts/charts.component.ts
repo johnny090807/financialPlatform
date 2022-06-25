@@ -120,6 +120,8 @@ export class ChartsComponent implements OnInit {
     let Current_year=0;
     let credit=0;
     let tax=0;
+    let tax_sales=0;
+    let tax_purchase=0;
     let other_liability=0;
     let not_payed=0;
     let LIABILITY: any;
@@ -165,17 +167,19 @@ export class ChartsComponent implements OnInit {
     for(let i=0; i<this.data.length;i++) {
       if(this.data[i].cost>0){
         if(this.data[i].vat_payed==false){
-          tax=tax+this.data[i].cost*0.01*this.data[i].VAT
+          tax_sales=tax_sales+this.data[i].cost*0.01*this.data[i].VAT
         }
       }
     }
     for(let i=0; i<this.data.length;i++) {
       if(this.data[i].cost<0){
         if(this.data[i].vat_payed==false){
-          tax=tax+this.data[i].cost*0.01*this.data[i].VAT*-1
+          tax_purchase=tax_purchase+this.data[i].cost*0.01*this.data[i].VAT*-1
         }
       }
     }
+    tax=tax_sales-tax_purchase
+    console.log(tax_sales,tax_purchase,tax)
     for(let i=0; i<this.data.length; i++){
       if(this.data[i].cost<0){
         if(this.data[i].payed==false){
