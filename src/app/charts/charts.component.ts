@@ -983,7 +983,8 @@ export class ChartsComponent implements OnInit {
           "#DC8665", "#138086", "#534666", "#CD7672", "#EEB462",
           "#355070"],
         tooltip: {
-          trigger: 'item'
+          trigger: 'item',
+          formatter: '{a} <br/>{b} : {c} ({d}%)'
         },
         series: [
           {
