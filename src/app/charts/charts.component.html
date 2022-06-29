@@ -1,4 +1,5 @@
 <body>
+<!-- Used bulma to make layout -->
 <div class="tile is-ancestor">
   <div class="tile is-vertical is-7 ">
     <div class="tile">
@@ -12,7 +13,7 @@
       </div>
       <div class="tile is-parent">
         <article class="tile is-child box">
-          <p class="title"> Current Ratio<a matTooltip="Generally, 100% or more is Good, 200% or more is Excellent, and less than 50% is Risky in terms of liquidity"><mat-icon>info</mat-icon></a></p>
+          <p class="title"> Current Ratio<a matTooltip="It is used to determine the solvency or credit capacity of a company. Generally, 100% or more is Good, 200% or more is Excellent, and less than 50% is Risky in terms of liquidity"><mat-icon>info</mat-icon></a></p>
           <div class="content">
             <p class="value">• {{this.cards[0].current_ratio}}({{this.cards[0].current}}%)</p>
           </div>
@@ -20,7 +21,7 @@
       </div>
       <div class="tile is-parent">
         <article class="tile is-child box">
-          <p class="title"> Equity Ratio</p>
+          <p class="title"> Equity Ratio<a matTooltip="It is a good indicator of the level of leverage used by a company."><mat-icon>info</mat-icon></a></p>
           <div class="content">
             <p class="value">• {{this.cards[0].equity_ratio.toFixed(1)}}%</p>
           </div>
@@ -28,7 +29,7 @@
       </div>
       <div class="tile is-parent">
         <article class="tile is-child box">
-          <p class="title"> Debt Equity<a matTooltip="Usually it should not exceed 200%"><mat-icon>info</mat-icon></a></p>
+          <p class="title"> Debt Equity<a matTooltip="It is a indicatior of how much debt a company has used to get its assets. Usually it should not exceed 200%"><mat-icon>info</mat-icon></a></p>
           <div class="content">
             <p class="value">• {{this.cards[0].debt_ratio}}({{this.cards[0].debt}}%)</p>
           </div>
@@ -39,12 +40,14 @@
       <div class="tile">
         <div class="tile is-parent">
           <article class="tile is-child box">
+            <a matTooltip="You can check here your profit status for quarterly. Especially looking into the Net profit margin will give you the insight of your profit."><mat-icon>info</mat-icon></a>
             <div echarts [options]="option1" class="demo-echarts1" style="height:250px;">
             </div>
           </article>
         </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
+            <a matTooltip="You can see where you spend most. So it will help you make financial performance in the future."><mat-icon>info</mat-icon></a>
             <div echarts [options]="option2" class="demo-echarts2" style="height:250px;">
             </div>
           </article>
@@ -52,6 +55,7 @@
       </div>
       <div class="tile is-parent">
         <article class="tile is-child box">
+          <a matTooltip="It shows your Income and Expenses, and also Net profit for monthly. Check if your expense is too much than your income etc."><mat-icon>info</mat-icon></a>
           <div echarts [options]="options" class="demo-echarts" style="height:310px;">
           </div>
         </article>
@@ -62,16 +66,13 @@
     <article class="tile is-child box">
       <table mat-table [dataSource]="Balance" class="mat-elevation-z8">
 
-        <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
-
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Name </th>
           <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
 
-        <!-- Weight Column -->
+        <!-- euro Column -->
         <ng-container matColumnDef="euro">
           <th mat-header-cell *matHeaderCellDef> Euro </th>
           <td mat-cell *matCellDef="let element"> {{element.euro}} </td>

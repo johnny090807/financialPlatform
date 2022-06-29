@@ -45,11 +45,12 @@ export class ChartsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     let not_list: any = [];
     not_list = ['Inventory(Fixed Asset)', 'Debtors', 'Other receivables and assets',
       'Own Capital', 'Last year', 'Other Liabilities']
 
+    /*Variables for calculating income
+    * sum~sum11: Jan~Dec*/
     let sum = 0;
     let sum1 = 0;
     let sum2 = 0;
@@ -63,6 +64,8 @@ export class ChartsComponent implements OnInit {
     let sum10 = 0;
     let sum11 = 0;
 
+    /*Variables for calculating expense
+    * add~add11: Jan~Dec*/
     let add = 0;
     let add1 = 0;
     let add2 = 0;
@@ -76,6 +79,7 @@ export class ChartsComponent implements OnInit {
     let add10 = 0;
     let add11 = 0;
 
+    /*Variables for calculating values corresponding to not_list above*/
     let not = 0;
     let not1 = 0;
     let not2 = 0;
@@ -128,6 +132,8 @@ export class ChartsComponent implements OnInit {
     let Capacity:any;
     let Check:any;
 
+    /*Calculating items in overall view of balance sheet
+    * Making sum of each type*/
     for(let i=0; i<this.data.length;i++){
       if(this.data[i].type=='Inventory(Fixed Asset)'){
         if(this.data[i].cost>0){
@@ -162,8 +168,6 @@ export class ChartsComponent implements OnInit {
         Last_year = Last_year + this.data[i].cost
       }
     }
-
-
     for(let i=0; i<this.data.length;i++) {
       if(this.data[i].cost>0){
         if(this.data[i].vat_payed==false){
@@ -179,7 +183,6 @@ export class ChartsComponent implements OnInit {
       }
     }
     tax=tax_sales-tax_purchase
-    console.log(tax_sales,tax_purchase,tax)
     for(let i=0; i<this.data.length; i++){
       if(this.data[i].cost<0){
         if(this.data[i].payed==false){
@@ -203,13 +206,15 @@ export class ChartsComponent implements OnInit {
       }
     }
     console.log(not)
+    console.log(this.data)
     Current_year=Liquid_asset-tax-not_payed-other_liability-not
     LIABILITY=tax+other_liability+not_payed
-    Capacity=Own_capital+Last_year+Current_year
 
 
     total_asset = Math.round(Liquid_asset)+Math.round(Debtors)+Math.round(Other_asset)
     total_lia = Math.round(LIABILITY)
+
+    /*Caculating four indicators in dashboard*/
     working_capital = Math.round(total_asset - total_lia)
     equity_ratio = (working_capital / (total_asset)) * 100
     debt_ratio = total_lia / working_capital
@@ -217,6 +222,7 @@ export class ChartsComponent implements OnInit {
     current_ratio = total_asset / total_lia
     current_ratio1 = Math.round(current_ratio * 100)
 
+    /*Making data set for Balance sheet in dashboard*/
     this.Balance.push(
       {name: 'TOTAL ASSETS', euro: Math.round(Liquid_asset)+Math.round(Debtors)+Math.round(Other_asset)},
       {name: 'Accounts Receivable', euro: Math.round(Debtors)+Math.round(Other_asset)},
@@ -228,6 +234,7 @@ export class ChartsComponent implements OnInit {
       {name: 'Other Liabilities', euro: Math.round(other_liability)},
     );
     console.log(this.Balance)
+
     this.cards.push({
       'working': working_capital,
       'equity_ratio': equity_ratio,
@@ -238,7 +245,8 @@ export class ChartsComponent implements OnInit {
     })
     console.log(this.cards[0].debt_ratio)
 
-
+    /*Calculating Income for monthly, Should exclude values corresponding to not_list because
+    * they are neither income nor expenses*/
     for (let i = 0; i < this.data.length; i++) {
       if (new Date(this.data[i].date).getMonth() == 0) {
         if (this.data[i].cost > 0) {
@@ -246,6 +254,8 @@ export class ChartsComponent implements OnInit {
         }
       }
     }
+  /*Make sum of values corresponding to not_list for each month and exclude that sum from Income
+  * This process is repeated until Dec*/
     for(let i=0; i<this.data.length; i++) {
       for (let j = 0; j < not_list.length; j++) {
         if (this.data[i].cost > 0) {
@@ -479,6 +489,8 @@ export class ChartsComponent implements OnInit {
       }
     }
 
+    /*Caculating Expenses for monthly, Should exclude values corresponding to not_list because
+    * they are neither income nor expenses**/
       for (let i = 0; i < this.data.length; i++) {
         if (new Date(this.data[i].date).getMonth() == 0) {
           if (this.data[i].cost < 0) {
@@ -486,6 +498,8 @@ export class ChartsComponent implements OnInit {
           }
         }
       }
+    /*Make sum of values corresponding to not_list for each month and exclude that sum from Expense
+    * This process is repeated until Dec*/
       for(let i=0; i<this.data.length; i++) {
         for (let j = 0; j < not_list.length; j++) {
           if (this.data[i].cost < 0) {
@@ -498,8 +512,6 @@ export class ChartsComponent implements OnInit {
           }
         }
       }
-
-      console.log(add)
       for (let i = 0; i < this.data.length; i++) {
             if (new Date(this.data[i].date).getMonth() == 1) {
               if (this.data[i].cost < 0) {
@@ -519,7 +531,6 @@ export class ChartsComponent implements OnInit {
          }
        }
      }
-
       for (let i = 0; i < this.data.length; i++) {
             if (new Date(this.data[i].date).getMonth() == 2) {
               if (this.data[i].cost < 0) {
@@ -539,7 +550,6 @@ export class ChartsComponent implements OnInit {
         }
       }
     }
-
       for (let i = 0; i < this.data.length; i++) {
             if (new Date(this.data[i].date).getMonth() == 3) {
               if (this.data[i].cost < 0) {
@@ -559,7 +569,6 @@ export class ChartsComponent implements OnInit {
         }
       }
     }
-
       for (let i = 0; i < this.data.length; i++) {
             if (new Date(this.data[i].date).getMonth() == 4) {
               if (this.data[i].cost < 0) {
@@ -579,7 +588,6 @@ export class ChartsComponent implements OnInit {
         }
       }
     }
-
       for (let i = 0; i < this.data.length; i++) {
             if (new Date(this.data[i].date).getMonth() == 5) {
               if (this.data[i].cost < 0) {
@@ -599,7 +607,6 @@ export class ChartsComponent implements OnInit {
         }
       }
     }
-
       for (let i = 0; i < this.data.length; i++) {
             if (new Date(this.data[i].date).getMonth() == 6) {
               if (this.data[i].cost < 0) {
@@ -619,7 +626,6 @@ export class ChartsComponent implements OnInit {
         }
       }
     }
-
       for (let i = 0; i < this.data.length; i++) {
             if (new Date(this.data[i].date).getMonth() == 7) {
               if (this.data[i].cost < 0) {
@@ -639,7 +645,6 @@ export class ChartsComponent implements OnInit {
         }
       }
     }
-
       for (let i = 0; i < this.data.length; i++) {
             if (new Date(this.data[i].date).getMonth() == 8) {
               if (this.data[i].cost < 0) {
@@ -659,7 +664,6 @@ export class ChartsComponent implements OnInit {
         }
       }
     }
-
       for (let i = 0; i < this.data.length; i++) {
             if (new Date(this.data[i].date).getMonth() == 9) {
               if (this.data[i].cost < 0) {
@@ -679,7 +683,6 @@ export class ChartsComponent implements OnInit {
         }
       }
     }
-
       for (let i = 0; i < this.data.length; i++) {
         if (new Date(this.data[i].date).getMonth() == 10) {
           if (this.data[i].cost < 0) {
@@ -699,8 +702,6 @@ export class ChartsComponent implements OnInit {
         }
       }
     }
-
-
       for (let i = 0; i < this.data.length; i++) {
             if (new Date(this.data[i].date).getMonth() == 11) {
               if (this.data[i].cost < 0) {
@@ -721,7 +722,7 @@ export class ChartsComponent implements OnInit {
       }
     }
 
-
+    /*Transforming data to make Expenditure type Ratio*/
       let costs: any = []
       let a: any;
       let b: any;
@@ -756,7 +757,7 @@ export class ChartsComponent implements OnInit {
         }
       })
     })
-
+    /*Sorting in descending order*/
     for (let i=0; i<costs.length; i++){
       for(let j=i+1; j<costs.length;j++){
         if(costs[i].value<costs[j].value){
@@ -769,7 +770,32 @@ export class ChartsComponent implements OnInit {
         }
       }
     }
+
+    /*Making data set to make bar chart*/
+    /*Extracting type name*/
+    let d:any=[];
+    for (let i=0; i<costs.length; i++){
+      d[i]=costs[i].name
+    }
+    let f=0;
+    /*Sum of all values for expenditure type*/
+    for (let i=0; i<costs.length; i++){
+      f=f+costs[i].value
+    }
+    let e: any=[]
+    /*Calculating Ratio*/
+    for (let i=0; i<costs.length; i++){
+      e[i]=((costs[i].value/f)*100).toFixed(1)
+    }
+    let g:any=[]
+    /*Making data set*/
+    for (let i=0; i<costs.length; i++){
+      g.push({'name':d[i],'value':e[i]})
+    }
+    g.push({name:d})
     console.log(costs)
+
+    /*Chart of Income and Expenses*/
       this.options = {
         title: {
           text: "Income and Expenses"
@@ -865,6 +891,7 @@ export class ChartsComponent implements OnInit {
         ]
       };
 
+    /*Chart of Profit analysis*/
       this.option1 = {
         title: {
           text: "Profit Analysis",
@@ -968,6 +995,7 @@ export class ChartsComponent implements OnInit {
         ]
       };
 
+    /*Chart of Expenditure type ratio*/
       this.option2 = {
         title: {
           text: "Expenditure Type Ratio"
@@ -978,35 +1006,39 @@ export class ChartsComponent implements OnInit {
             saveAsImage: { show: true }
           }
         },
-        color: ["#6D597A","#B56576", "#E56B6F", "#EAAC8B",
-          "#D8E0BB", "#B6CEC7", "#8FB9AA","#86A3C3", "#7268A6", "#6B3074",
-          "#DC8665", "#138086", "#534666", "#CD7672", "#EEB462",
-          "#355070"],
+        color: ["#6D597A"],
         tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)'
+          trigger: 'axis'
+        },
+        grid: {
+          left: '20%',
+          bottom:'85'
+        },
+        xAxis: {
+          type: 'category',
+          data: d,
+          axisLabel: { interval: 0, rotate: 30 }
+        },
+        yAxis: {
+          type: 'value',
+          axisLabel: {
+            formatter: '{value} %'
+          },
+          data:e
         },
         series: [
           {
-            name: 'Type of Cost',
-            ratio: '50%',
-            type: 'pie',
-            data: costs,
-            height: '80%',
-            top: '15%',
-            emphasis: {
-              itemStyle: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
+            data: g,
+            type: 'bar',
+            tooltip: {
+              valueFormatter: function (value: number) {
+                return value + ' %';
               }
             },
-            labelLine: {
-              show: true
-            },
-          },
-        ],
+          }
+        ]
       };
+
 
 
     }
