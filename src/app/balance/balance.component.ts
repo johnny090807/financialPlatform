@@ -18,6 +18,7 @@ export class BalanceComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    /*code for showing Type costs*/
     this.data.forEach(row => {
       let found = false;
       this.costs.forEach((cost:any) => {
@@ -36,6 +37,7 @@ export class BalanceComponent implements OnInit {
       })
     })
     let not_list:any;
+    /*The types corresponding to not_list should not be shown in type costs*/
     not_list=['Inventory(Fixed Asset)', 'Debtors', 'Other receivables and assets',
       'Own Capital','Last year','Other Liabilities']
     not_list.forEach((item:any) => {
@@ -62,6 +64,7 @@ export class BalanceComponent implements OnInit {
     let Capacity:any;
     let Check:any;
 
+    /*Calculating each account titles*/
     for(let i=0; i<this.data.length;i++){
       if(this.data[i].type=='Inventory(Fixed Asset)'){
         if(this.data[i].cost>0){
@@ -96,8 +99,6 @@ export class BalanceComponent implements OnInit {
         Last_year = Last_year + this.data[i].cost
       }
     }
-
-
     for(let i=0; i<this.data.length;i++) {
       if(this.data[i].cost>0){
         if(this.data[i].vat_payed==false){
@@ -108,7 +109,7 @@ export class BalanceComponent implements OnInit {
     for(let i=0; i<this.data.length;i++) {
       if(this.data[i].cost<0){
         if(this.data[i].vat_payed==false){
-          tax=tax+this.data[i].cost*0.01*this.data[i].VAT*-1
+          tax=tax+this.data[i].cost*0.01*this.data[i].VAT
         }
       }
     }
